@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { BG_COLOR } from 'Styles/colors';
 
 const GlobalStyles = createGlobalStyle`
   html {
@@ -6,8 +7,8 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background-color: #1f1f1f;
-    color: #FFFFFF;
+    background-color: ${BG_COLOR};
+    font-family: 'Roboto', sans-serif;
     font-size: 1.6rem;
   }
 `;

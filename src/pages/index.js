@@ -1,37 +1,99 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link, graphql } from 'gatsby';
-import Layout from 'Components/layout';
-import HomeTitle from 'Components/HomeTitle';
-import HomeWrapper from 'Components/HomeWrapper';
-import SEO from 'Components/seo';
-import Helmet from 'react-helmet';
-import HomeDescription from 'Components/HomeDescription';
+import {
+  Link,
+  graphql
+} from 'gatsby';
+import Layout from 'Components/Layout';
+import Logo from 'Components/Logo';
+import SEOPage from 'Components/SEOPage';
+import { homeSocialIconMixin } from 'Styles/mixins';
+import {
+  COLOR_WHITE,
+  COLOR_PRIMARY
+} from 'Styles/colors';
+import TwitterIcon from 'Icons/Twitter';
+import GithubIcon from 'Icons/Github';
+import LinkedinIcon from 'Icons/Linkedin';
+import PencilIcon from 'Icons/Pencil';
+import EnvelopeIcon from 'Icons/Envelope';
+
+const IndexPageWrapperStyled = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 5rem auto;
+`;
 
 const IndexPageStyled = styled.div`
-  margin: 5rem 2rem;
+  display: inline-flex;
+  flex-direction: column;
+`;
+
+const TwitterIconStyled = styled(TwitterIcon)`
+  ${homeSocialIconMixin}
+`;
+
+const GithubIconStyled = styled(GithubIcon)`
+  ${homeSocialIconMixin}
+`;
+
+const LinkedinIconStyled = styled(LinkedinIcon)`
+  ${homeSocialIconMixin}
+`;
+
+const PencilIconStyled = styled(PencilIcon)`
+  ${homeSocialIconMixin}
+`;
+
+const EnvelopeIconStyled = styled(EnvelopeIcon)`
+  ${homeSocialIconMixin}
+`;
+
+const IconGroupStyled = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -.5rem;
+
+  & > a:not(:last-child) {
+    margin-right: 1.5rem;
+  }
 `;
 
 const IndexPage = ({ data }) => (
   <Layout>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-    <Helmet
-      link={[
-        {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css?family=Halant:700|Sedgwick+Ave'
-        }
-      ]}
+    <SEOPage
+      title={data.site.siteMetadata.title}
+      keywords={['developer']}
+      withTitleTemplate={false}
     />
-    <IndexPageStyled>
-      <HomeWrapper>
-        <HomeTitle
-          title={data.site.siteMetadata.title}
+    <IndexPageWrapperStyled>
+      <IndexPageStyled>
+        <Logo
+          colorTitle={COLOR_WHITE}
+          fontSizeTitle="12.5rem"
+          colorSubtitle={COLOR_PRIMARY}
+          fontSizeSubtitle="1.6rem"
+          showSubtitle={true}
         />
-        <HomeDescription description={data.site.siteMetadata.description} />
-        {/* <Link to="/page-2/">Go to page 2</Link> */}
-      </HomeWrapper>
-    </IndexPageStyled>
+        <IconGroupStyled>
+          <a href={data.site.siteMetadata.links.twitter} target="_blank">
+            <TwitterIconStyled title="Twitter" />
+          </a>
+          <a href={data.site.siteMetadata.links.github} target="_blank">
+            <GithubIconStyled title="Github" />
+          </a>
+          <a href={data.site.siteMetadata.links.linkedin} target="_blank">
+            <LinkedinIconStyled title="Linkedin" />
+          </a>
+          <a href={data.site.siteMetadata.links.mail} target="_blank">
+            <EnvelopeIconStyled title="Email" />
+          </a>
+          <Link to="/blog">
+            <PencilIconStyled title="Blog" />
+          </Link>
+        </IconGroupStyled>
+      </IndexPageStyled>
+    </IndexPageWrapperStyled>
   </Layout>
 );
 
@@ -39,8 +101,13 @@ export const query = graphql`
   {
     site {
       siteMetadata {
-        title,
-        description
+        title
+        links {
+          twitter
+          linkedin
+          github
+          mail
+        }
       }
     }
   }
