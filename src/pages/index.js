@@ -18,15 +18,13 @@ import LinkedinIcon from 'Icons/Linkedin';
 import PencilIcon from 'Icons/Pencil';
 import EnvelopeIcon from 'Icons/Envelope';
 
-const IndexPageWrapperStyled = styled.div`
-  display: flex;
-  justify-content: center;
+const IndexPageStyled = styled.div`
   margin: 5rem auto;
+  width: 80%;
 `;
 
-const IndexPageStyled = styled.div`
-  display: inline-flex;
-  flex-direction: column;
+const LogoWrapperStyled = styled.div`
+  margin-bottom: 1.5rem;
 `;
 
 const TwitterIconStyled = styled(TwitterIcon)`
@@ -66,34 +64,32 @@ const IndexPage = ({ data }) => (
       keywords={['developer']}
       withTitleTemplate={false}
     />
-    <IndexPageWrapperStyled>
-      <IndexPageStyled>
+    <IndexPageStyled>
+      <LogoWrapperStyled>
         <Logo
           colorTitle={COLOR_WHITE}
-          fontSizeTitle="12.5rem"
           colorSubtitle={COLOR_PRIMARY}
-          fontSizeSubtitle="1.6rem"
           showSubtitle={true}
         />
-        <IconGroupStyled>
-          <a href={data.site.siteMetadata.links.twitter} target="_blank">
-            <TwitterIconStyled title="Twitter" />
-          </a>
-          <a href={data.site.siteMetadata.links.github} target="_blank">
-            <GithubIconStyled title="Github" />
-          </a>
-          <a href={data.site.siteMetadata.links.linkedin} target="_blank">
-            <LinkedinIconStyled title="Linkedin" />
-          </a>
-          <a href={data.site.siteMetadata.links.mail} target="_blank">
-            <EnvelopeIconStyled title="Email" />
-          </a>
-          <Link to="/blog">
-            <PencilIconStyled title="Blog" />
-          </Link>
-        </IconGroupStyled>
-      </IndexPageStyled>
-    </IndexPageWrapperStyled>
+      </LogoWrapperStyled>
+      <IconGroupStyled>
+        <a href={data.site.siteMetadata.links.twitter} target="_blank">
+          <TwitterIconStyled title="Twitter" />
+        </a>
+        <a href={data.site.siteMetadata.links.github} target="_blank">
+          <GithubIconStyled title="Github" />
+        </a>
+        <a href={data.site.siteMetadata.links.linkedin} target="_blank">
+          <LinkedinIconStyled title="Linkedin" />
+        </a>
+        <a href={data.site.siteMetadata.links.mail} target="_blank">
+          <EnvelopeIconStyled title="Email" />
+        </a>
+        <Link to="/blog">
+          <PencilIconStyled title="Blog" />
+        </Link>
+      </IconGroupStyled>
+    </IndexPageStyled>
   </Layout>
 );
 
