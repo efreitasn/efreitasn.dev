@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
+import Link from 'Components/Link';
 import { COLOR_SECONDARY } from 'Styles/colors';
 
 const a = keyframes`
@@ -28,7 +29,7 @@ const LinksListItem = styled.div`
   transform: translateX(-200px);
 `;
 
-const LinksListLink = styled.a`
+const LinksListLink = styled(Link)`
   display: block;
   text-decoration: none;
   transition: border-left .5s ease;
@@ -53,7 +54,7 @@ const LinksList = ({ links }) => (
       icon,
       url
     }) => (
-      <LinksListLink href={url} key={url} target="_blank">
+      <LinksListLink to={url} key={url} target="_blank">
         <LinksListItem>
           <LinksListIconWrapper>
             {icon}
@@ -67,10 +68,11 @@ const LinksList = ({ links }) => (
 
 LinksList.propTypes = {
   links: PropTypes.arrayOf(PropTypes.shape({
-    url: PropTypes.string,
-    label: PropTypes.string,
-    icon: PropTypes.node
-  }))
+    url: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    icon: PropTypes.node.isRequired,
+    isLocal: PropTypes.bool
+  })).isRequired
 };
 
 export default LinksList;

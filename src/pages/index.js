@@ -132,7 +132,7 @@ const IndexPage = ({ data }) => (
           links={[
             {
               label: 'Blog',
-              url: data.site.siteMetadata.links.blog,
+              url: '/blog',
               icon: <PencilIconStyled title="Blog" />
             },
             {
