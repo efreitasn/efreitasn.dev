@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
+import { COLOR_PRIMARY } from 'Styles/colors';
 
 const query = graphql`
   query DefaultSEOQuery {
@@ -39,6 +40,18 @@ const SEOPage = ({
           title={title}
           titleTemplate={withTitleTemplate ? `%s - ${data.site.siteMetadata.title}` : undefined}
           meta={[
+            {
+              name: 'theme-color',
+              content: COLOR_PRIMARY
+            },
+            {
+              name: 'msapplication-navbutton-color',
+              content: COLOR_PRIMARY
+            },
+            {
+              name: 'apple-mobile-web-app-status-bar-style',
+              content: COLOR_PRIMARY
+            },
             {
               name: `description`,
               content: metaDescription,

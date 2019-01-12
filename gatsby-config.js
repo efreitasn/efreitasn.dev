@@ -9,7 +9,9 @@ module.exports = {
       twitter: 'https://twitter.com/efreitasn',
       github: 'https://github.com/efreitasn',
       linkedin: 'https://www.linkedin.com/in/efreitasn',
-      mail: 'mailto:efreitasn@hotmail.com'
+      mail: 'mailto:efreitasn@hotmail.com',
+      medium: 'https://medium.com/@efreitasn',
+      codepen: 'https://codepen.io/efreitasn'
     }
   },
   plugins: [
@@ -34,11 +36,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `efreitasn`,
+        short_name: `efreitasn`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#7AD1E6`,
+        theme_color: `#7AD1E6`,
         display: `minimal-ui`,
         // icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },

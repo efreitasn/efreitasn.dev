@@ -4,10 +4,23 @@ import PropTypes from 'prop-types';
 import GlobalStyles from 'Styles/GlobalStyles';
 import Helmet from 'react-helmet';
 import 'normalize.css/normalize.css';
+import {
+  bk1,
+  bk2
+} from 'Styles/breakpoints';
 
 const LayoutWrapperStyled = styled.div`
   width: 50%;
   margin: 0 auto;
+  overflow-x: hidden;
+
+  ${bk1`
+    width: 75%;
+  `}
+
+  ${bk2`
+    width: 100%;
+  `}
 `;
 
 const Layout = ({ children }) => (
