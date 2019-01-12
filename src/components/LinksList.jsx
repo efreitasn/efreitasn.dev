@@ -31,9 +31,14 @@ const LinksListItem = styled.div`
 const LinksListLink = styled.a`
   display: block;
   text-decoration: none;
+  transition: border-left .5s ease;
 
   &:not(:last-child) {
     border-bottom: 1px dashed ${COLOR_SECONDARY};
+  }
+
+  &:hover {
+    border-left: 10px solid ${COLOR_SECONDARY};
   }
 `;
 

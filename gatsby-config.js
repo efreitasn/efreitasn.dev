@@ -39,10 +39,10 @@ module.exports = {
         name: `efreitasn`,
         short_name: `efreitasn`,
         start_url: `/`,
-        background_color: `#7AD1E6`,
+        background_color: `#1f1f1f`,
         theme_color: `#7AD1E6`,
-        display: `minimal-ui`,
-        // icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        display: `standalone`,
+        icon: `src/images/icon.png`
       },
     },
     `gatsby-plugin-styled-components`,
