@@ -1,13 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import GlobalStyles from 'Styles/GlobalStyles';
 import Helmet from 'react-helmet';
-import 'normalize.css/normalize.css';
+import styled from 'styled-components';
+import GlobalStyles from 'Styles/GlobalStyles';
 import {
   bk1,
   bk2
 } from 'Styles/breakpoints';
+import 'normalize.css/normalize.css';
 
 const LayoutWrapperStyled = styled.div`
   width: 50%;
@@ -29,7 +29,7 @@ const Layout = ({ children }) => (
       link={[
         {
           rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css?family=Halant:700|Sedgwick+Ave|Roboto:400,700'
+          href: 'https://fonts.googleapis.com/css?family=Roboto:400,700'
         }
       ]}
     />

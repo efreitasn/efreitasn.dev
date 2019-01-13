@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link as GatsbyLink } from 'gatsby';
+import PropTypes from 'prop-types';
 
 const isLocalLinkCheck = link => /^\/.*/i.test(link);
 
@@ -8,7 +8,8 @@ const Link = ({
   to,
   target,
   children,
-  className
+  className,
+  title
 }) => {
   const isLocalLink = isLocalLinkCheck(to);
 
@@ -17,6 +18,7 @@ const Link = ({
       to={to}
       className={className}
       children={children}
+      title={title}
     />
   ) : (
     <a
@@ -24,6 +26,7 @@ const Link = ({
       target={target}
       className={className}
       children={children}
+      title={title}
     />
   );
 };
@@ -37,7 +40,8 @@ Link.propTypes = {
     '_parent',
     '_top'
   ]),
-  className: PropTypes.string
+  className: PropTypes.string,
+  title: PropTypes.string
 };
 
 export default Link;

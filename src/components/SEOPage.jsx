@@ -1,7 +1,7 @@
 import React from 'react';
+import { StaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { StaticQuery, graphql } from 'gatsby';
 import { COLOR_PRIMARY } from 'Styles/colors';
 
 const query = graphql`
@@ -34,9 +34,7 @@ const SEOPage = ({
 
       return (
         <Helmet
-          htmlAttributes={{
-            lang,
-          }}
+          htmlAttributes={{ lang }}
           title={title}
           titleTemplate={withTitleTemplate ? `%s - ${data.site.siteMetadata.title}` : undefined}
           meta={[
