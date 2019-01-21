@@ -29,7 +29,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 };
 
 exports.createPages = async ({ actions, graphql }) => {
-  const blogPostTemplate = path.resolve(`src/templates/post.js`);
+  const blogPostTemplate = path.resolve(`src/templates/post.jsx`);
   const { createPage } = actions;
   const {
     errors,
@@ -41,6 +41,9 @@ exports.createPages = async ({ actions, graphql }) => {
           node {
             fields {
               slug
+            }
+            frontmatter {
+              img
             }
           }
         }
@@ -54,7 +57,8 @@ exports.createPages = async ({ actions, graphql }) => {
     path: `/posts${node.fields.slug}`,
     component: blogPostTemplate,
     context: {
-      slug: node.fields.slug
+      slug: node.fields.slug,
+      img: node.frontmatter.img
     }
   }));
 };

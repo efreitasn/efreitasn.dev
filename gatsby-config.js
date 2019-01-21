@@ -16,13 +16,19 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: `images`,
-    //     path: `${__dirname}/src/images`,
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: `${__dirname}/src/components/Layout.jsx`
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -39,8 +45,8 @@ module.exports = {
         name: `efreitasn`,
         short_name: `efreitasn`,
         start_url: `/`,
-        background_color: `#1f1f1f`,
-        theme_color: `#7AD1E6`,
+        background_color: `#EDEDED`,
+        theme_color: `#17677F`,
         display: `standalone`,
         icon: `src/images/icon.png`
       },

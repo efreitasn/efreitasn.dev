@@ -1,7 +1,12 @@
-export const COLOR_PRIMARY = '#7AD1E6';
-export const COLOR_PRIMARY_DARK = '#5695a5';
-export const COLOR_SECONDARY = '#2E474E';
-export const COLOR_WHITE = '#CCf4FF';
-export const COLOR_BLACK = '#1f1f1f';
+export const COLOR_PRIMARY = '#17677F';
+export const COLOR_PRIMARY_DARK = '#125366';
+export const COLOR_SECONDARY = '#269DA3';
+// export const COLOR_WHITE = '#CCf4FF';
+export const COLOR_BLACK = '#1b1b1b';
 
-export const BG_COLOR = COLOR_BLACK;
+// Greys
+export const COLOR_GREY_1 = '#EDEDED';
+export const COLOR_GREY_2 = '#5A5A5A';
+export const COLOR_GREY_3 = '#5D5B5B';
+
+export const BG_COLOR = COLOR_GREY_1;
