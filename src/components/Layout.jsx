@@ -172,11 +172,13 @@ const Layout = ({ children }) => (
             >
               {props => (
                 <LayoutHeaderAnimated style={props}>
-                  <Logo
-                    colorTitle={COLOR_PRIMARY}
-                    colorSubtitle={COLOR_SECONDARY}
-                    showSubtitle={true}
-                  />
+                  <Link to="/">
+                    <Logo
+                      colorTitle={COLOR_PRIMARY}
+                      colorSubtitle={COLOR_SECONDARY}
+                      showSubtitle={true}
+                    />
+                  </Link>
                 </LayoutHeaderAnimated>
               )}
             </Spring>

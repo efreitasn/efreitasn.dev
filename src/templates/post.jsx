@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
-import { COLOR_GREY_1 } from 'Styles/colors';
+import { COLOR_SECONDARY } from 'Styles/colors';
 
 const PostTitle = styled.h1`
   font-size: 2.4rem;
@@ -24,18 +24,24 @@ const PostContent = styled.div`
 `;
 
 const PostFooter = styled.footer`
-  background-color: ${COLOR_GREY_1};
+  align-items: center;
+  background-color: ${COLOR_SECONDARY};
+  color: white;
+  display: flex;
+  font-size: 1.8rem;
   margin-top: 2rem;
   padding: 2.5rem;
 `;
 
-const PostImg = styled.div`
-  background-image: ${({ imgUrl }) => `url('${imgUrl}')`};
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 30rem;
+const PostImg = styled.img`
+  width: 100%;
+`;
+
+const AuthorImg = styled.img`
+  border-radius: 50%;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  height: 6rem;
+  margin-right: 2rem;
 `;
 
 export default ({ data }) => {
@@ -48,9 +54,8 @@ export default ({ data }) => {
     <article>
       <header>
         <PostImg
-          imgUrl={data.file.publicURL}
-          role="img"
-          aria-label={frontmatter.img_alt}
+          src={data.file.publicURL}
+          alt={frontmatter.img_alt}
         />
         <PostTitle>{frontmatter.title}</PostTitle>
       </header>
@@ -58,7 +63,8 @@ export default ({ data }) => {
         __html: html
       }} />
       <PostFooter>
-        a
+        <AuthorImg src="https://miro.medium.com/fit/c/240/240/1*fIIsv1j-3ynYNrqgE5gprg.jpeg" />
+        <span>Emanuel</span>
       </PostFooter>
     </article>
   );
