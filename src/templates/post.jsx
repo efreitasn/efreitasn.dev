@@ -7,7 +7,7 @@ const PostTitle = styled.h1`
   font-size: 2.4rem;
   font-weight: 700;
   line-height: 3.2rem;
-  padding: 2rem 2.5rem;
+  padding: 2rem 4rem;
 `;
 
 const PostContent = styled.div`
@@ -15,7 +15,7 @@ const PostContent = styled.div`
   text-align: justify;
 
   & > p {
-    padding: 0 2.5rem;
+    padding: 0 4rem;
   }
 
   & > p:not(:last-child) {
@@ -30,7 +30,7 @@ const PostFooter = styled.footer`
   display: flex;
   font-size: 1.8rem;
   margin-top: 2rem;
-  padding: 2.5rem;
+  padding: 1.5rem 2rem;
 `;
 
 const PostImg = styled.img`
@@ -40,7 +40,7 @@ const PostImg = styled.img`
 const AuthorImg = styled.img`
   border-radius: 50%;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-  height: 6rem;
+  height: 4rem;
   margin-right: 2rem;
 `;
 
@@ -62,10 +62,6 @@ export default ({ data }) => {
       <PostContent dangerouslySetInnerHTML={{
         __html: html
       }} />
-      <PostFooter>
-        <AuthorImg src="https://miro.medium.com/fit/c/240/240/1*fIIsv1j-3ynYNrqgE5gprg.jpeg" />
-        <span>Emanuel</span>
-      </PostFooter>
     </article>
   );
 };

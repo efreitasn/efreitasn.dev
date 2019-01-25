@@ -13,7 +13,8 @@ import Logo from 'Components/Logo';
 import {
   COLOR_PRIMARY,
   COLOR_PRIMARY_DARK,
-  COLOR_SECONDARY
+  COLOR_SECONDARY,
+  COLOR_GREY_1
 } from 'Styles/colors';
 import GlobalStyles from 'Styles/GlobalStyles';
 import {
@@ -54,19 +55,12 @@ const LayoutHeader = styled.header`
   width: 70%;
 `;
 
-const LayoutContent = styled.main`
+const LayoutMainWrapper = styled.div`
   background-color: #FFFFFF;
   border-radius: 15px;
+  margin-bottom: 4rem;
   /* Put overflow because of the border-radius */
   overflow-x: hidden;
-`;
-
-const LayoutFooter = styled.footer`
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 4rem;
-  margin-top: 2rem;
-  padding: 0 1rem;
 `;
 
 const FooterLink = styled(Link)`
@@ -125,6 +119,32 @@ const query = graphql`
 `;
 
 const LayoutHeaderAnimated = animated(LayoutHeader);
+
+const LayoutFooter = styled.footer`
+  background-color: ${COLOR_SECONDARY};
+  color: white;
+  font-size: 1.8rem;
+  padding: 2rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* display: grid;
+  grid: repeat(2, auto) / auto 1fr; */
+`;
+
+const AuthorImg = styled.img`
+  border-radius: 50%;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  height: 7rem;
+  opacity: .7;
+`;
+
+const By = styled.span`
+  font-size: 1.2rem;
+  margin-right: 0.6rem;
+  color: ${COLOR_GREY_1};
+`;
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -195,34 +215,38 @@ const Layout = ({ children }) => (
               }}
             >
               {props => (
-                <LayoutContent style={props}>
-                  {children}
-                </LayoutContent>
+                <LayoutMainWrapper style={props}>
+                  <main>
+                    {children}
+                  </main>
+                  <LayoutFooter>
+                    <div style={{
+                      gridRow: '1/3'
+                    }}>
+                      <AuthorImg src="https://miro.medium.com/fit/c/240/240/1*fIIsv1j-3ynYNrqgE5gprg.jpeg" />
+                    </div>
+                    <div style={{
+                      marginBottom: '.4rem'
+                    }}>
+                      <By>By</By>
+                      <span style={{
+                        fontSize: '1.6rem'
+                      }}>Emanuel</span>
+                    </div>
+                    <div>
+                      {icons.map(({
+                        icon,
+                        url
+                      }) => (
+                        <FooterLink key={url} to={url} target="_blank">
+                          {icon}
+                        </FooterLink>
+                      ))}
+                    </div>
+                  </LayoutFooter>
+                </LayoutMainWrapper>
               )}
             </Spring>
-            <LayoutFooter>
-              <Spring
-                from={{
-                  transform: 'translateX(100%)'
-                }}
-                to={{
-                  transform: 'translateX(0)'
-                }}
-              >
-                {props => (
-                  <div style={props}>
-                    {icons.map(({
-                      icon,
-                      url
-                    }) => (
-                      <FooterLink key={url} to={url} target="_blank">
-                        {icon}
-                      </FooterLink>
-                    ))}
-                  </div>
-                )}
-              </Spring>
-            </LayoutFooter>
           </LayoutWrapperStyled>
         </>
       );
