@@ -37,13 +37,16 @@ const GlobalStyles = createGlobalStyle`
   h4,
   h5,
   h6,
-  p {
+  p,
+  figure,
+  figcaption,
+  body {
     margin: 0;
     padding: 0;
   }
 
   p {
-    line-height: 1.5;
+    line-height: 1.8;
   }
 `;
 

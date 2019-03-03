@@ -2,10 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Logo from 'Components/Logo';
-import {
-  COLOR_PRIMARY,
-  COLOR_GREY_3
-} from 'Styles/colors';
+import { COLOR_GREY_3 } from 'Styles/colors';
 import GlobalStyles from 'Styles/GlobalStyles';
 import {
   bk1,
@@ -30,13 +27,13 @@ const LayoutWrapperStyled = styled.div`
 `;
 
 const LayoutHeader = styled.header`
-  margin: 0 auto 2rem auto;
+  margin: 0 auto .5rem auto;
   width: 70%;
 `;
 
 const LayoutMainWrapper = styled.div`
   background-color: #FFFFFF;
-  border-radius: 15px;
+  /* border-radius: 15px; */
   box-shadow: ${shadow1};
   /* overflow because of the border-radius */
   overflow-x: hidden;
@@ -62,9 +59,7 @@ const Layout = ({ children }) => (
     <LayoutWrapperStyled>
       <LayoutHeader>
         <Link to="/">
-          <Logo
-            color={COLOR_PRIMARY}
-          />
+          <Logo />
         </Link>
       </LayoutHeader>
       <LayoutMainWrapper>

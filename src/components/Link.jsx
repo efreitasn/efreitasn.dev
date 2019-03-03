@@ -9,7 +9,8 @@ const Link = ({
   target,
   children,
   className,
-  title
+  title,
+  rel
 }) => {
   const isLocalLink = isLocalLinkCheck(to);
 
@@ -28,6 +29,7 @@ const Link = ({
       className={className}
       children={children}
       title={title}
+      rel={rel}
     />
   );
 };
@@ -42,6 +44,7 @@ Link.propTypes = {
     '_top'
   ]),
   className: PropTypes.string,
+  rel: PropTypes.string,
   title: PropTypes.string
 };
 

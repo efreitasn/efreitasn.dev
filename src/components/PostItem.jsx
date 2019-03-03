@@ -51,7 +51,7 @@ const PostItemFooter = styled.footer`
   font-size: 1.4rem;
 `;
 
-const DateStyled = styled.span`
+const DateStyled = styled.time`
   color: ${COLOR_GREY_4};
   font-size: 1.2rem;
 `;
@@ -61,28 +61,27 @@ const PostItem = ({
   description,
   url,
   date
-}) => {
-  const momentDate = moment(date);
-
-  return (
-    <PostItemStyled>
-      <header>
-        <PostItemLink to={url}>
-          <PostItemTitle>
-            {title}
-          </PostItemTitle>
-        </PostItemLink>
-      </header>
-      <PostItemDescription>
-        {description}
-      </PostItemDescription>
-      <PostItemFooter>
-        {/* <CalendarIconStyled /> */}
-        <DateStyled title={momentDate.format('YYYY-MM-DD')}>{momentDate.from()}</DateStyled>
-      </PostItemFooter>
-    </PostItemStyled>
-  );
-};
+}) => (
+  <PostItemStyled>
+    <header>
+      <PostItemLink to={url}>
+        <PostItemTitle>
+          {title}
+        </PostItemTitle>
+      </PostItemLink>
+    </header>
+    <PostItemDescription>
+      {description}
+    </PostItemDescription>
+    <PostItemFooter>
+      {/* <CalendarIconStyled /> */}
+      <DateStyled
+        title={date}
+        dateTime={date}
+      >{moment(date).from()}</DateStyled>
+    </PostItemFooter>
+  </PostItemStyled>
+);
 
 PostItem.propTypes = {
   title: PropTypes.string.isRequired,

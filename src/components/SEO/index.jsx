@@ -136,7 +136,7 @@ SEO.propTypes = {
     name: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired
   })),
-  keywords: PropTypes.arrayOf(PropTypes.string),
+  keywords: PropTypes.arrayOf(PropTypes.string).isRequired,
   title: PropTypes.string.isRequired,
   indexPage: PropTypes.bool,
   ogType: PropTypes.oneOf(['website', 'article']).isRequired,

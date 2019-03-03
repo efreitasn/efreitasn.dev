@@ -24,7 +24,19 @@ const About = ({
         <PageTitle>About</PageTitle>
         <PageContent>
           <p>
-            Hi. My name's Emanuel and I'm a front-end developer. You can find me on <Link target="_blank" to={links.twitter}>Twitter</Link> and <Link to={links.github} target="_blank">Github</Link> or <Link to={links.mail} target="_blank">send me an email</Link>.
+            Hi. My name's Emanuel and I'm a front-end developer. You can find me on <Link
+              target="_blank"
+              to={links.twitter}
+              rel="noopener noreferrer"
+            >Twitter</Link> and <Link
+              to={links.github}
+              target="_blank"
+              rel="noopener noreferrer"
+            >Github</Link> or <Link
+              to={links.mail}
+              target="_blank"
+              rel="noopener noreferrer"
+            >send me an email</Link>.
           </p>
         </PageContent>
       </div>

@@ -1,6 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {
+  StaticQuery,
+  graphql
+} from 'gatsby';
 import SEO from '.';
+
+const seoPageQuery = graphql`
+  {
+    file(base: {
+      eq: "the-default.png"
+    }) {
+      publicURL
+    }
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`;
 
 const SEOPost = ({
   description,
@@ -13,15 +32,20 @@ const SEOPost = ({
 }) => {
   // TODO put StaticQuery with default image and image_alt from siteMetadata
   return (
-    <SEO
-      ogType="website"
-      title={title}
-      description={description}
-      lang={lang}
-      image={image}
-      imageAlt={imageAlt}
-      keywords={keywords}
-      indexPage={indexPage}
+    <StaticQuery
+      query={seoPageQuery}
+      render={data => (
+        <SEO
+          ogType="website"
+          title={title}
+          description={description}
+          lang={lang}
+          image={image || data.file.publicURL}
+          imageAlt={imageAlt || data.site.siteMetadata.title}
+          keywords={keywords}
+          indexPage={indexPage}
+        />
+      )}
     />
   );
 };
@@ -29,7 +53,7 @@ const SEOPost = ({
 SEOPost.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
-  keywords: PropTypes.string.isRequired,
+  keywords: PropTypes.arrayOf(PropTypes.string).isRequired,
   title: PropTypes.string.isRequired,
   image: PropTypes.string,
   imageAlt: PropTypes.string,
