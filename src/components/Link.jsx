@@ -19,6 +19,7 @@ const Link = ({
       className={className}
       children={children}
       title={title}
+      target={target}
     />
   ) : (
     <a

@@ -3,15 +3,18 @@ const { resolve } = require('path');
 module.exports = {
   siteMetadata: {
     title: `efreitasn`,
-    description: `Pseudo-front-ender.`,
-    author: `@efreitasn`,
+    description: `A front-end dev.`,
+    url: 'https://efreitasn.github.io',
+    author: {
+      firstName: 'Emanuel',
+      lastName: 'Freitas',
+      fullName: 'Emanuel Freitas',
+      twitter: '@efreitasn'
+    },
     links: {
       twitter: 'https://twitter.com/efreitasn',
       github: 'https://github.com/efreitasn',
-      linkedin: 'https://www.linkedin.com/in/efreitasn',
-      mail: 'mailto:efreitasn@hotmail.com',
-      medium: 'https://medium.com/@efreitasn',
-      codepen: 'https://codepen.io/efreitasn'
+      mail: 'mailto:efreitasn@hotmail.com'
     }
   },
   plugins: [
@@ -59,7 +62,6 @@ module.exports = {
           'Components': resolve(__dirname, 'src/components'),
           'Pages': resolve(__dirname, 'src/pages'),
           'Styles': resolve(__dirname, 'src/styles'),
-          'Utils': resolve(__dirname, 'src/utils'),
           'Icons': resolve(__dirname, 'src/icons')
         },
         extensions: []

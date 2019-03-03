@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 // Components
 import PostItem from 'Components/PostItem';
-import SEOPage from 'Components/SEOPage';
+import SEOPage from 'Components/SEO/Page';
 
 const IndexPage = ({ data }) => {
   return (
@@ -39,7 +39,14 @@ export const query = graphql`
         title
       }
     }
-    allMarkdownRemark {
+    allMarkdownRemark (
+      sort: {
+        order: DESC,
+        fields: [
+          frontmatter___date
+        ]
+      }
+    ) {
       edges {
         node {
           frontmatter {

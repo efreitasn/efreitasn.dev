@@ -4,7 +4,7 @@ title: "Well, well, well. Look who's 18."
 description: "Yep, that's right."
 img: "img1.jpg"
 img_alt: "The dream"
-keywords: "second, aaa"
+keywords: "first, aaa"
 ---
 ~~Lorem~~ ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquet nec ullamcorper sit amet risus nullam eget felis. Consectetur purus ut faucibus pulvinar. Augue mauris augue neque gravida in fermentum. Fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque. Vivamus at augue eget arcu. Curabitur vitae nunc sed velit dignissim sodales ut eu sem. Duis at consectetur lorem donec massa. Ut venenatis tellus in metus vulputate. Sed felis eget velit aliquet sagittis id consectetur purus. In aliquam sem fringilla ut. Volutpat maecenas volutpat blandit aliquam. A iaculis at erat pellentesque adipiscing commodo elit. Eu facilisis sed odio morbi quis commodo. Dolor sed viverra ipsum nunc.
 

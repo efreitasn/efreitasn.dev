@@ -1,41 +1,44 @@
 import React from 'react';
 import styled from'styled-components';
-import Layout from 'Components/Layout';
-import SEOPage from 'Components/SEOPage';
+import SEOPage from 'Components/SEO/Page';
 import {
-  COLOR_PRIMARY,
-  // COLOR_PRIMARY_DARK
+  COLOR_GREY_2,
+  COLOR_GREY_3
 } from 'Styles/colors';
 
 const NotFoundPageStyled = styled.div`
-  text-align: center;
+  display: flex;
+  align-items: center;
+  padding: 6rem 5rem;
+  justify-content: flex-end;
 `;
 
 const SadSpan = styled.span`
-  color: ${COLOR_PRIMARY};
-  display: inline-block;
-  font-size: 22rem;
-  transform: rotate(90deg);
+  color: ${COLOR_GREY_2};
+  font-size: 4rem;
+  margin-top: -1rem;
+  font-weight: bold;
 `;
 
-// const MessageStyled = styled.div`
-//   font-size: 2.4rem;
-//   font-weight: 700;
-//   color: ${COLOR_PRIMARY_DARK};
-//   text-transform: uppercase;
-// `;
+const MessageStyled = styled.div`
+  font-size: 3rem;
+  font-weight: 700;
+  color: ${COLOR_GREY_3};
+  margin-right: 2rem;
+  text-transform: uppercase;
+`;
 
 const NotFoundPage = () => (
-  <Layout>
+  <>
     <SEOPage
       title="Not found"
       indexPage={false}
     />
     <NotFoundPageStyled>
-      <SadSpan>:(</SadSpan>
-      {/* <MessageStyled>Home page</MessageStyled> */}
+      <MessageStyled>404</MessageStyled>
+      <SadSpan aria-hidden="true">:(</SadSpan>
     </NotFoundPageStyled>
-  </Layout>
+  </>
 );
 
 export default NotFoundPage;

@@ -6,9 +6,9 @@ import Link from 'Components/Link';
 import {
   COLOR_PRIMARY,
   COLOR_PRIMARY_DARK,
-  COLOR_GREY_1,
-  COLOR_GREY_2,
-  COLOR_GREY_3
+  BG_COLOR,
+  COLOR_GREY_3,
+  COLOR_GREY_4
 } from 'Styles/colors';
 
 const PostItemStyled = styled.article`
@@ -19,7 +19,7 @@ const PostItemStyled = styled.article`
   }
 
   &:not(:last-child) {
-    border-bottom: 2px solid ${COLOR_GREY_1};
+    border-bottom: 2px solid ${BG_COLOR};
   }
 `;
 
@@ -40,7 +40,7 @@ const PostItemTitle = styled.h2`
 `;
 
 const PostItemDescription = styled.p`
-  color: ${COLOR_GREY_2};
+  color: ${COLOR_GREY_3};
   font-size: 1.6rem;
   margin-bottom: 1rem;
 `;
@@ -52,7 +52,7 @@ const PostItemFooter = styled.footer`
 `;
 
 const DateStyled = styled.span`
-  color: ${COLOR_GREY_3};
+  color: ${COLOR_GREY_4};
   font-size: 1.2rem;
 `;
 
@@ -82,7 +82,7 @@ const PostItem = ({
       </PostItemFooter>
     </PostItemStyled>
   );
-}
+};
 
 PostItem.propTypes = {
   title: PropTypes.string.isRequired,

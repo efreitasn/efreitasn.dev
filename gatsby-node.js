@@ -51,7 +51,7 @@ exports.createPages = async ({ actions, graphql }) => {
     }
   `);
 
-  if (errors) return Promise.reject(errors);
+  if (errors) throw errors;
 
   data.allMarkdownRemark.edges.forEach(({ node }) => createPage({
     path: `/posts${node.fields.slug}`,

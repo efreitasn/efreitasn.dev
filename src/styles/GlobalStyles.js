@@ -24,6 +24,11 @@ const GlobalStyles = createGlobalStyle`
 
   a {
     color: ${COLOR_PRIMARY};
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   h1,
@@ -35,6 +40,10 @@ const GlobalStyles = createGlobalStyle`
   p {
     margin: 0;
     padding: 0;
+  }
+
+  p {
+    line-height: 1.5;
   }
 `;
 
