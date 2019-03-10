@@ -8,7 +8,7 @@ const IndexPage = ({ data }) => {
   return (
     <>
       <SEOPage
-        title={data.site.siteMetadata.title}
+        title="Home"
         keywords={['developer', 'front-end']}
         withTitleTemplate={false}
       />
