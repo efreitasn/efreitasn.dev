@@ -4,7 +4,7 @@ module.exports = {
   siteMetadata: {
     title: `efreitasn`,
     description: `A front-end dev.`,
-    url: 'https://efreitasn.github.io',
+    url: 'https://efreitasn.dev',
     author: {
       firstName: 'Emanuel',
       lastName: 'Freitas',

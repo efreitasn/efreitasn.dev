@@ -31,12 +31,12 @@ const LayoutHeader = styled.header`
   width: 70%;
 `;
 
-const LayoutMainWrapper = styled.div`
+const LayoutMain = styled.main`
   background-color: #FFFFFF;
-  /* border-radius: 15px; */
+  border-radius: 15px;
   box-shadow: ${shadow1};
   /* overflow because of the border-radius */
-  overflow-x: hidden;
+  overflow: hidden;
 `;
 
 const LayoutFooter = styled.footer`
@@ -62,11 +62,9 @@ const Layout = ({ children }) => (
           <Logo />
         </Link>
       </LayoutHeader>
-      <LayoutMainWrapper>
-        <main>
-          {children}
-        </main>
-      </LayoutMainWrapper>
+      <LayoutMain>
+        {children}
+      </LayoutMain>
       <LayoutFooter>
         <LayoutFooterBy>By</LayoutFooterBy>
         <Link to="/about">Emanuel</Link>
