@@ -37,6 +37,10 @@ const LayoutMain = styled.main`
   box-shadow: ${shadow1};
   /* overflow because of the border-radius */
   overflow: hidden;
+
+  ${bk2`
+    border-radius: 0;
+  `}
 `;
 
 const LayoutFooter = styled.footer`

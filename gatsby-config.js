@@ -14,7 +14,7 @@ module.exports = {
     links: {
       twitter: 'https://twitter.com/efreitasn',
       github: 'https://github.com/efreitasn',
-      mail: 'mailto:efreitasn@hotmail.com'
+      mail: 'mailto:me@efreitasn.dev'
     }
   },
   plugins: [
