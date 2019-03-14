@@ -102,7 +102,7 @@ export const query = graphql`
     }) {
       html
       frontmatter {
-        date(formatString: "YYYY-MM-DD")
+        date
         title
         description
         img_alt
