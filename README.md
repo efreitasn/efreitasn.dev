@@ -1,1 +1,1 @@
-A personal site.
+efreitasn's personal blog powered by [GatsbyJS](https://www.gatsbyjs.org).

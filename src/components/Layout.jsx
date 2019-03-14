@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import {
+  StaticQuery,
+  graphql
+} from 'gatsby';
 import Logo from 'Components/Logo';
 import { COLOR_GREY_3 } from 'Styles/colors';
 import GlobalStyles from 'Styles/GlobalStyles';
@@ -46,35 +50,67 @@ const LayoutMain = styled.main`
 const LayoutFooter = styled.footer`
   align-items: flex-end;
   display: flex;
+  flex-direction: column;
+  font-size: 1.4rem;
   justify-content: flex-end;
-  margin-top: 2rem;
+  margin-top: 2.5rem;
   padding: 0 1.5rem;
+
+  & > div:first-child {
+    margin-bottom: 5px;
+  }
 `;
 
 const LayoutFooterBy = styled.span`
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin-right: 0.5rem;
   color: ${COLOR_GREY_3};
 `;
 
+const layoutQuery = graphql`
+  {
+    site {
+      siteMetadata {
+        links {
+          gitRepo
+        }
+      }
+    }
+  }
+`;
+
 const Layout = ({ children }) => (
-  <>
-    <GlobalStyles />
-    <LayoutWrapperStyled>
-      <LayoutHeader>
-        <Link to="/">
-          <Logo />
-        </Link>
-      </LayoutHeader>
-      <LayoutMain>
-        {children}
-      </LayoutMain>
-      <LayoutFooter>
-        <LayoutFooterBy>By</LayoutFooterBy>
-        <Link to="/about">Emanuel</Link>
-      </LayoutFooter>
-    </LayoutWrapperStyled>
-  </>
+  <StaticQuery
+    query={layoutQuery}
+    render={({ site }) => (
+      <>
+        <GlobalStyles />
+        <LayoutWrapperStyled>
+          <LayoutHeader>
+            <Link to="/">
+              <Logo />
+            </Link>
+          </LayoutHeader>
+          <LayoutMain>
+            {children}
+          </LayoutMain>
+          <LayoutFooter>
+            <div>
+              <Link
+                to={site.siteMetadata.links.gitRepo}
+                rel="noopener noreferrer"
+                target="_blank"
+              >View on Github</Link>
+            </div>
+            <div>
+              <LayoutFooterBy>By</LayoutFooterBy>
+              <Link to="/about">Emanuel</Link>
+            </div>
+          </LayoutFooter>
+        </LayoutWrapperStyled>
+      </>
+    )}
+  />
 );
 
 Layout.propTypes = {

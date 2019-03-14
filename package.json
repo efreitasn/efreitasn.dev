@@ -1,9 +1,8 @@
 {
   "name": "efreitasn.github.io",
-  "private": true,
-  "description": "A personal site.",
+  "description": "efreitasn's personal blog.",
   "version": "0.1.0",
-  "author": "Emanuel Freitas <efreitasn@hotmail.com>",
+  "author": "Emanuel Freitas <me@efreitasn.dev>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",
     "gatsby": "^2.0.76",
