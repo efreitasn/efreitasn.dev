@@ -4608,6 +4608,12 @@ gatsby-plugin-alias-imports@^1.0.5:
   dependencies:
     "@babel/runtime" "^7.2.0"
 
+gatsby-plugin-google-analytics@^2.0.17:
+  version "2.0.17"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-analytics/-/gatsby-plugin-google-analytics-2.0.17.tgz#42d6e69b66804c27bc2744ef874a642ff98c530c"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+
 gatsby-plugin-layout@^1.0.11:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-layout/-/gatsby-plugin-layout-1.0.11.tgz#02f9a0103cbd17bdf66fd9a5ca5434d5c089ce88"
