@@ -29,6 +29,10 @@ const PageContent = styled.div`
     margin: 0 4rem;
     padding: 1.5rem 2.5rem;
 
+    ${bk2`
+      margin: 0 2rem;
+    `}
+
     &:not(:last-child) {
       margin-bottom: 2rem;
     }
