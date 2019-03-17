@@ -8499,12 +8499,6 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
-react-spring@^7.2.9:
-  version "7.2.9"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-7.2.9.tgz#57b2b01e3bc4a34b48c18b34bca01a87e230b4a7"
-  dependencies:
-    "@babel/runtime" "^7.0.0"
-
 react@^16.6.3:
   version "16.7.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.7.0.tgz#b674ec396b0a5715873b350446f7ea0802ab6381"

@@ -18,7 +18,7 @@ export default function HTML({
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        <link rel="preload" href="https://fonts.googleapis.com/css?family=Roboto:400,700" as="font" />
+        <link rel="prefetch" href="https://fonts.googleapis.com/css?family=Roboto:400,700" as="font" />
         {headComponents}
       </head>
       <body {...bodyAttributes}>

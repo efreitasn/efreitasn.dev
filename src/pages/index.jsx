@@ -23,7 +23,7 @@ const IndexPage = ({ data }) => {
             key={fields.slug}
             title={frontmatter.title}
             description={frontmatter.description}
-            url={`/posts/${fields.slug}`}
+            url={`/posts${fields.slug}`}
             date={frontmatter.date}
           />
         ))}
