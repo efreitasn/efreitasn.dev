@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+  - node
+cache:
+  yarn: true
+branches:
+  only:
+    - master
+before_script:
+  - yarn lint
+script:
+  - yarn build
+  - echo \"efreitasn.dev\" > public/CNAME"
+deploy:
+  provider: pages
+  local-dir: public
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: true
