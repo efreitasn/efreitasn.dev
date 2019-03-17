@@ -10,7 +10,7 @@ before_script:
   - yarn lint
 script:
   - yarn build
-  - echo \"efreitasn.dev\" > public/CNAME"
+  - echo "efreitasn.dev" > public/CNAME
 deploy:
   provider: pages
   local-dir: public
