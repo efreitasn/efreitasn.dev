@@ -10,7 +10,7 @@ const query = graphql`
       siteMetadata {
         title
         description
-        url
+        siteUrl
         author {
           twitter
         }
@@ -37,7 +37,7 @@ const SEO = ({
         descriptionProps || data.site.siteMetadata.description;
       const metaRobots = indexPage ? 'index, follow' : 'noindex, nofollow';
       const title = `${titleProps} - ${data.site.siteMetadata.title}`;
-      const image = `${data.site.siteMetadata.url}${imageProps}`;
+      const image = `${data.site.siteMetadata.siteUrl}${imageProps}`;
 
       return (
         <Helmet
