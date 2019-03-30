@@ -22,6 +22,7 @@ module.exports = {
     }
   },
   plugins: [
+    'gatsby-plugin-typescript',
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     'gatsby-transformer-remark',
@@ -115,7 +116,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-layout`,
       options: {
-        component: `${__dirname}/src/components/Layout.jsx`
+        component: `${__dirname}/src/components/Layout.tsx`
       }
     },
     {

@@ -32,6 +32,7 @@ const NotFoundPage = () => (
   <>
     <SEOPage
       title="Not found"
+      description="Page not found"
       indexPage={false}
     />
     <NotFoundPageStyled>

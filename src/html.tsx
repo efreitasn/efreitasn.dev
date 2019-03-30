@@ -1,5 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
+interface Props {
+  htmlAttributes: {};
+  headComponents: any[];
+  bodyAttributes: {};
+  preBodyComponents: [];
+  body: string;
+  postBodyComponents: [];
+}
 
 export default function HTML({
   htmlAttributes,
@@ -8,7 +16,7 @@ export default function HTML({
   preBodyComponents,
   body: bodyProps,
   postBodyComponents
-}) {
+}: Props) {
   return (
     <html {...htmlAttributes}>
       <head>
@@ -35,12 +43,3 @@ export default function HTML({
     </html>
   );
 }
-
-HTML.propTypes = {
-  htmlAttributes: PropTypes.object,
-  headComponents: PropTypes.array,
-  bodyAttributes: PropTypes.object,
-  preBodyComponents: PropTypes.array,
-  body: PropTypes.string,
-  postBodyComponents: PropTypes.array,
-};

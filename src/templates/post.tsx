@@ -11,6 +11,55 @@ import {
 import moment from 'moment';
 import { bk2 } from 'Styles/breakpoints';
 
+interface Props {
+  data: {
+    markdownRemark: {
+      html: string;
+      frontmatter: {
+        date: string;
+        title: string;
+        description: string;
+        img_alt: string;
+        img_caption_text: string;
+        img_caption_link: string;
+        keywords: string;
+      }
+    }
+    file: {
+      publicURL: string;
+    }
+  }
+};
+
+export const query = graphql`
+  query BlogPostBySlug(
+    $slug: String!
+    $img: String!
+  ) {
+    markdownRemark(fields: {
+      slug: {
+        eq: $slug
+      }
+    }) {
+      html
+      frontmatter {
+        date
+        title
+        description
+        img_alt
+        img_caption_text
+        img_caption_link
+        keywords
+      }
+    }
+    file(base: {
+      eq: $img
+    }) {
+      publicURL
+    }
+  }
+`;
+
 const PostImg = styled.img`
   width: 100%;
 `;
@@ -43,7 +92,9 @@ const PostTitleWrapper = styled.div`
   margin-top: 1.5rem;
 `;
 
-export default ({ data }) => {
+export default function PostTemplate({
+  data
+}: Props) {
   const {
     html,
     frontmatter
@@ -89,32 +140,3 @@ export default ({ data }) => {
     </>
   );
 };
-
-export const query = graphql`
-  query BlogPostBySlug(
-    $slug: String!
-    $img: String!
-  ) {
-    markdownRemark(fields: {
-      slug: {
-        eq: $slug
-      }
-    }) {
-      html
-      frontmatter {
-        date
-        title
-        description
-        img_alt
-        img_caption_text
-        img_caption_link
-        keywords
-      }
-    }
-    file(base: {
-      eq: $img
-    }) {
-      publicURL
-    }
-  }
-`;

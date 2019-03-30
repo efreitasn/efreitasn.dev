@@ -1,8 +1,22 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
-import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { COLOR_PRIMARY } from 'Styles/colors';
+
+interface Props {
+  description: string;
+  lang: string;
+  meta: Array<{
+    name: string;
+    content: string
+  }>;
+  keywords: string[];
+  title: string;
+  indexPage: boolean;
+  ogType: 'website' | 'article';
+  image: string;
+  imageAlt: string;
+}
 
 const query = graphql`
   query SEOQuery {
@@ -20,7 +34,7 @@ const query = graphql`
 `;
 
 const SEO = ({
-  description: descriptionProps,
+  description,
   lang,
   meta,
   keywords,
@@ -29,12 +43,10 @@ const SEO = ({
   ogType,
   image: imageProps,
   imageAlt
-}) => (
+}: Props) => (
   <StaticQuery
     query={query}
     render={data => {
-      const description =
-        descriptionProps || data.site.siteMetadata.description;
       const metaRobots = indexPage ? 'index, follow' : 'noindex, nofollow';
       const title = `${titleProps} - ${data.site.siteMetadata.title}`;
       const image = `${data.site.siteMetadata.siteUrl}${imageProps}`;
@@ -123,25 +135,10 @@ const SEO = ({
 );
 
 SEO.defaultProps = {
-  lang: `en`,
+  lang: 'en',
   meta: [],
   keywords: [],
   indexPage: true
-};
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    content: PropTypes.string.isRequired
-  })),
-  keywords: PropTypes.arrayOf(PropTypes.string).isRequired,
-  title: PropTypes.string.isRequired,
-  indexPage: PropTypes.bool,
-  ogType: PropTypes.oneOf(['website', 'article']).isRequired,
-  image: PropTypes.string.isRequired,
-  imageAlt: PropTypes.string.isRequired
 };
 
 export default SEO;

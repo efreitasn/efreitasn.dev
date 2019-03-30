@@ -5,9 +5,37 @@ import Link from 'Components/Link';
 import PageContent from 'Components/PageContent';
 import SEOPage from 'Components/SEO/Page';
 
-const About = ({
+interface Props {
+  data: {
+    site: {
+      siteMetadata: {
+        links: {
+          twitter: string;
+          github: string;
+          mail: string;
+        }
+      }
+    }
+  }
+};
+
+export const query = graphql`
+  {
+    site {
+      siteMetadata {
+        links {
+          twitter
+          github
+          mail
+        }
+      }
+    }
+  }
+`;
+
+export default function About({
   data
-}) => {
+}: Props) {
   const { links } = data.site.siteMetadata;
 
   return (
@@ -43,19 +71,3 @@ const About = ({
     </>
   );
 };
-
-export const query = graphql`
-  {
-    site {
-      siteMetadata {
-        links {
-          twitter
-          github
-          mail
-        }
-      }
-    }
-  }
-`;
-
-export default About;

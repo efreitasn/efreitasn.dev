@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import styled from 'styled-components';
 import {
   StaticQuery,
@@ -16,6 +15,10 @@ import {
   shadow1
 } from 'Styles/shadows';
 import Link from 'Components/Link';
+
+interface Props {
+  children: React.ReactNode
+};
 
 const LayoutWrapperStyled = styled.div`
   width: 50%;
@@ -79,42 +82,40 @@ const layoutQuery = graphql`
   }
 `;
 
-const Layout = ({ children }) => (
-  <StaticQuery
-    query={layoutQuery}
-    render={({ site }) => (
-      <>
-        <GlobalStyles />
-        <LayoutWrapperStyled>
-          <LayoutHeader>
-            <Link to="/">
-              <Logo />
-            </Link>
-          </LayoutHeader>
-          <LayoutMain>
-            {children}
-          </LayoutMain>
-          <LayoutFooter>
-            <div>
-              <Link
-                to={site.siteMetadata.links.gitRepo}
-                rel="noopener noreferrer"
-                target="_blank"
-              >View on Github</Link>
-            </div>
-            <div>
-              <LayoutFooterBy>By</LayoutFooterBy>
-              <Link to="/about">Emanuel</Link>
-            </div>
-          </LayoutFooter>
-        </LayoutWrapperStyled>
-      </>
-    )}
-  />
-);
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired
-};
+function Layout({ children }: Props) {
+  return (
+    <StaticQuery
+      query={layoutQuery}
+      render={({ site }) => (
+        <>
+          <GlobalStyles />
+          <LayoutWrapperStyled>
+            <LayoutHeader>
+              <Link to="/">
+                <Logo />
+              </Link>
+            </LayoutHeader>
+            <LayoutMain>
+              {children}
+            </LayoutMain>
+            <LayoutFooter>
+              <div>
+                <Link
+                  to={site.siteMetadata.links.gitRepo}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >View on Github</Link>
+              </div>
+              <div>
+                <LayoutFooterBy>By</LayoutFooterBy>
+                <Link to="/about">Emanuel</Link>
+              </div>
+            </LayoutFooter>
+          </LayoutWrapperStyled>
+        </>
+      )}
+    />
+  );
+}
 
 export default Layout;
