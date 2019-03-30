@@ -1,6 +1,5 @@
 import React from 'react';
 import moment from 'moment';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Link from 'Components/Link';
 import {
@@ -10,6 +9,13 @@ import {
   COLOR_GREY_3,
   COLOR_GREY_4
 } from 'Styles/colors';
+
+interface Props {
+  title: string;
+  description: string;
+  url: string;
+  date: string;
+};
 
 const PostItemStyled = styled.article`
   padding: 3rem 4rem;
@@ -61,7 +67,7 @@ const PostItem = ({
   description,
   url,
   date
-}) => (
+}: Props) => (
   <PostItemStyled>
     <header>
       <PostItemLink to={url}>
@@ -82,12 +88,5 @@ const PostItem = ({
     </PostItemFooter>
   </PostItemStyled>
 );
-
-PostItem.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired
-};
 
 export default PostItem;

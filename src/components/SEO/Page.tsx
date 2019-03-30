@@ -1,10 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   StaticQuery,
   graphql
 } from 'gatsby';
 import SEO from '.';
+
+interface Props {
+  description?: string,
+  lang: string,
+  keywords: string[],
+  title: string,
+  image?: string,
+  imageAlt?: string,
+  indexPage: boolean
+};
 
 const seoPageQuery = graphql`
   {
@@ -16,12 +25,13 @@ const seoPageQuery = graphql`
     site {
       siteMetadata {
         title
+        description
       }
     }
   }
 `;
 
-const SEOPost = ({
+export default function SEOPage({
   description,
   lang,
   keywords,
@@ -29,8 +39,7 @@ const SEOPost = ({
   image,
   imageAlt,
   indexPage
-}) => {
-  // TODO put StaticQuery with default image and image_alt from siteMetadata
+}: Props) {
   return (
     <StaticQuery
       query={seoPageQuery}
@@ -38,7 +47,7 @@ const SEOPost = ({
         <SEO
           ogType="website"
           title={title}
-          description={description}
+          description={description || data.site.siteMetadata.description}
           lang={lang}
           image={image || data.file.publicURL}
           imageAlt={imageAlt || data.site.siteMetadata.title}
@@ -50,14 +59,9 @@ const SEOPost = ({
   );
 };
 
-SEOPost.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  keywords: PropTypes.arrayOf(PropTypes.string).isRequired,
-  title: PropTypes.string.isRequired,
-  image: PropTypes.string,
-  imageAlt: PropTypes.string,
-  indexPage: PropTypes.bool
+SEOPage.defaultProps = {
+  lang: 'en',
+  meta: [],
+  keywords: [],
+  indexPage: true
 };
-
-export default SEOPost;

@@ -29,7 +29,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 };
 
 exports.createPages = async ({ actions, graphql }) => {
-  const blogPostTemplate = path.resolve(`src/templates/post.jsx`);
+  const blogPostTemplate = path.resolve(`src/templates/post.tsx`);
   const { createPage } = actions;
   const {
     errors,

@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "author": "Emanuel Freitas <me@efreitasn.dev>",
   "dependencies": {
+    "@types/styled-components": "^4.1.12",
     "babel-plugin-styled-components": "^1.10.0",
     "gatsby": "^2.0.76",
     "gatsby-image": "^2.0.20",
@@ -16,12 +17,12 @@
     "gatsby-plugin-react-helmet": "^3.0.2",
     "gatsby-plugin-sharp": "^2.0.30",
     "gatsby-plugin-styled-components": "^3.0.4",
+    "gatsby-plugin-typescript": "^2.0.11",
     "gatsby-source-filesystem": "^2.0.8",
     "gatsby-transformer-remark": "^2.1.19",
     "gatsby-transformer-sharp": "^2.1.17",
     "moment": "^2.23.0",
     "normalize.css": "^8.0.1",
-    "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-helmet": "^5.2.0",
@@ -36,11 +37,14 @@
     "develop": "gatsby develop",
     "start": "npm run develop",
     "lint": "eslint \"**/*.js\"",
+    "ts-check": "tsc",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
   "devDependencies": {
+    "@types/react-helmet": "^5.0.8",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.12.0",
-    "eslint-plugin-react": "^7.12.3"
+    "eslint-plugin-react": "^7.12.3",
+    "typescript": "^3.4.1"
   }
 }

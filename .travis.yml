@@ -8,6 +8,7 @@ branches:
     - master
 before_script:
   - yarn lint
+  - yarn ts-check
 script:
   - yarn build
   - echo "efreitasn.dev" > public/CNAME

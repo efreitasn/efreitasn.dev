@@ -1,0 +1,25 @@
+{
+  "include": ["./src/**/*"],
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noImplicitReturns": true,
+    "esModuleInterop": true,
+    "strictNullChecks": true,
+    "noEmit": true,
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "Components/*": ["src/components/*"],
+      "Pages": ["src/pages"],
+      "Styles/*": ["src/styles/*"],
+      "Icons": ["src/icons"]
+    },
+    "types": [
+      "styled-components",
+      "react-helmet"
+    ]
+  }
+}
