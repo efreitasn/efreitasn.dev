@@ -6,7 +6,7 @@
   "dependencies": {
     "@types/styled-components": "^4.1.12",
     "babel-plugin-styled-components": "^1.10.0",
-    "gatsby": "^2.0.76",
+    "gatsby": "^2.3.4",
     "gatsby-image": "^2.0.20",
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-feed": "^2.1.0",
@@ -23,8 +23,8 @@
     "gatsby-transformer-sharp": "^2.1.17",
     "moment": "^2.23.0",
     "normalize.css": "^8.0.1",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "react-helmet": "^5.2.0",
     "styled-components": "^4.1.3"
   },
