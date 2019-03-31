@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import {
-  StaticQuery,
-  graphql
+  graphql,
+  useStaticQuery
 } from 'gatsby';
 import Logo from 'Components/Logo';
 import { COLOR_GREY_3 } from 'Styles/colors';
@@ -70,6 +70,16 @@ const LayoutFooterBy = styled.span`
   color: ${COLOR_GREY_3};
 `;
 
+type LayoutQuery = {
+  site: {
+    siteMetadata: {
+      links: {
+        gitRepo: string
+      }
+    }
+  }
+};
+
 const layoutQuery = graphql`
   {
     site {
@@ -83,38 +93,35 @@ const layoutQuery = graphql`
 `;
 
 function Layout({ children }: Props) {
+  const { site }: LayoutQuery = useStaticQuery(layoutQuery);
+
   return (
-    <StaticQuery
-      query={layoutQuery}
-      render={({ site }) => (
-        <>
-          <GlobalStyles />
-          <LayoutWrapperStyled>
-            <LayoutHeader>
-              <Link to="/">
-                <Logo />
-              </Link>
-            </LayoutHeader>
-            <LayoutMain>
-              {children}
-            </LayoutMain>
-            <LayoutFooter>
-              <div>
-                <Link
-                  to={site.siteMetadata.links.gitRepo}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >View on Github</Link>
-              </div>
-              <div>
-                <LayoutFooterBy>By</LayoutFooterBy>
-                <Link to="/about">Emanuel</Link>
-              </div>
-            </LayoutFooter>
-          </LayoutWrapperStyled>
-        </>
-      )}
-    />
+    <>
+      <GlobalStyles />
+      <LayoutWrapperStyled>
+        <LayoutHeader>
+          <Link to="/">
+            <Logo />
+          </Link>
+        </LayoutHeader>
+        <LayoutMain>
+          {children}
+        </LayoutMain>
+        <LayoutFooter>
+          <div>
+            <Link
+              to={site.siteMetadata.links.gitRepo}
+              rel="noopener noreferrer"
+              target="_blank"
+            >View on Github</Link>
+          </div>
+          <div>
+            <LayoutFooterBy>By</LayoutFooterBy>
+            <Link to="/about">Emanuel</Link>
+          </div>
+        </LayoutFooter>
+      </LayoutWrapperStyled>
+    </>
   );
 }
 

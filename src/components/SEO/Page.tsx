@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  StaticQuery,
+  useStaticQuery,
   graphql
 } from 'gatsby';
 import SEO from '.';
@@ -14,6 +14,18 @@ interface Props {
   imageAlt?: string,
   indexPage: boolean
 };
+
+interface SEOPageQuery {
+  file: {
+    publicURL: string
+  }
+  site: {
+    siteMetadata: {
+      title: string;
+      description: string;
+    }
+  }
+}
 
 const seoPageQuery = graphql`
   {
@@ -40,21 +52,21 @@ export default function SEOPage({
   imageAlt,
   indexPage
 }: Props) {
+  const {
+    site,
+    file
+  }: SEOPageQuery = useStaticQuery(seoPageQuery);
+
   return (
-    <StaticQuery
-      query={seoPageQuery}
-      render={data => (
-        <SEO
-          ogType="website"
-          title={title}
-          description={description || data.site.siteMetadata.description}
-          lang={lang}
-          image={image || data.file.publicURL}
-          imageAlt={imageAlt || data.site.siteMetadata.title}
-          keywords={keywords}
-          indexPage={indexPage}
-        />
-      )}
+    <SEO
+      ogType="website"
+      title={title}
+      description={description || site.siteMetadata.description}
+      lang={lang}
+      image={image || file.publicURL}
+      imageAlt={imageAlt || site.siteMetadata.title}
+      keywords={keywords}
+      indexPage={indexPage}
     />
   );
 };
