@@ -5,7 +5,6 @@ import {
   useStaticQuery
 } from 'gatsby';
 import Logo from 'Components/Logo';
-import { COLOR_GREY_3 } from 'Styles/colors';
 import GlobalStyles from 'Styles/GlobalStyles';
 import {
   bk1,
@@ -14,6 +13,7 @@ import {
 import {
   shadow1
 } from 'Styles/shadows';
+import { COLOR_GREY_2 } from 'Styles/colors';
 import Link from 'Components/Link';
 
 interface Props {
@@ -53,7 +53,6 @@ const LayoutMain = styled.main`
 const LayoutFooter = styled.footer`
   align-items: flex-end;
   display: flex;
-  flex-direction: column;
   font-size: 1.4rem;
   justify-content: flex-end;
   margin-top: 2.5rem;
@@ -64,18 +63,17 @@ const LayoutFooter = styled.footer`
   }
 `;
 
-const LayoutFooterBy = styled.span`
-  font-size: 1rem;
-  margin-right: 0.5rem;
-  color: ${COLOR_GREY_3};
+const LayoutFooterSplitter = styled.span.attrs({
+  children: '/'
+})`
+  color: ${COLOR_GREY_2};
+  margin: 0 1rem;
 `;
 
 type LayoutQuery = {
   site: {
     siteMetadata: {
-      links: {
-        gitRepo: string
-      }
+      feedUrl: string
     }
   }
 };
@@ -84,9 +82,7 @@ const layoutQuery = graphql`
   {
     site {
       siteMetadata {
-        links {
-          gitRepo
-        }
+        feedUrl
       }
     }
   }
@@ -108,17 +104,13 @@ function Layout({ children }: Props) {
           {children}
         </LayoutMain>
         <LayoutFooter>
-          <div>
-            <Link
-              to={site.siteMetadata.links.gitRepo}
-              rel="noopener noreferrer"
-              target="_blank"
-            >View on Github</Link>
-          </div>
-          <div>
-            <LayoutFooterBy>By</LayoutFooterBy>
-            <Link to="/about">Emanuel</Link>
-          </div>
+          <Link
+            to={site.siteMetadata.feedUrl}
+            rel="noopener noreferrer"
+            target="_blank"
+          >RSS</Link>
+          <LayoutFooterSplitter />
+          <Link to="/about">About</Link>
         </LayoutFooter>
       </LayoutWrapperStyled>
     </>
