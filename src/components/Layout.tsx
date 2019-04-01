@@ -21,8 +21,9 @@ interface Props {
 };
 
 const LayoutWrapperStyled = styled.div`
-  width: 50%;
   margin: 4rem auto;
+  max-width: 900px;
+  width: 50%;
 
   ${bk1`
     width: 75%;
