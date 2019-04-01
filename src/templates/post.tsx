@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import { graphql } from 'gatsby';
 import SEOPost from 'Components/SEO/Post';
 import PageTitle from 'Components/PageTitle';
-import Link from 'Components/Link';
 import PageContent from 'Components/PageContent';
 import {
   COLOR_GREY_3
 } from 'Styles/colors';
 import moment from 'moment';
 import { bk2 } from 'Styles/breakpoints';
+import GatsbyImage, { FluidObject } from 'gatsby-image';
 
 interface Props {
   data: {
@@ -19,14 +19,15 @@ interface Props {
         date: string;
         title: string;
         description: string;
-        img_alt: string;
-        img_caption_text: string;
-        img_caption_link: string;
+        cover_alt: string;
+        cover_caption: string;
         keywords: string;
       }
     }
     file: {
-      publicURL: string;
+      childImageSharp: {
+        fluid: FluidObject
+      }
     }
   }
 };
@@ -34,7 +35,7 @@ interface Props {
 export const query = graphql`
   query BlogPostBySlug(
     $slug: String!
-    $img: String!
+    $coverImgGlob: String!
   ) {
     markdownRemark(fields: {
       slug: {
@@ -46,22 +47,21 @@ export const query = graphql`
         date
         title
         description
-        img_alt
-        img_caption_text
-        img_caption_link
+        cover_alt
+        cover_caption
         keywords
       }
     }
-    file(base: {
-      eq: $img
+    file(absolutePath: {
+      glob: $coverImgGlob
     }) {
-      publicURL
+      childImageSharp {
+        fluid(maxWidth: 900) {
+          ...GatsbyImageSharpFluid
+        }
+      }
     }
   }
-`;
-
-const PostImg = styled.img`
-  width: 100%;
 `;
 
 const PostImgCaption = styled.figcaption`
@@ -106,26 +106,18 @@ export default function PostTemplate({
         title={frontmatter.title}
         description={frontmatter.description}
         keywords={frontmatter.keywords}
-        image={data.file.publicURL}
-        imageAlt={frontmatter.img_alt}
+        image={data.file.childImageSharp.fluid.src}
+        imageAlt={frontmatter.cover_alt}
       />
       <article>
         <header>
           <figure>
-            <PostImg
-              src={data.file.publicURL}
-              alt={frontmatter.img_alt}
+            <GatsbyImage
+              fluid={data.file.childImageSharp.fluid}
+              alt={frontmatter.cover_alt}
             />
             <PostImgCaption>
-              {frontmatter.img_caption_link ? (
-                <Link
-                  to={frontmatter.img_caption_link}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >{frontmatter.img_caption_text}</Link>
-              ) : (
-                <span>{frontmatter.img_caption_text}</span>
-              )}
+              <span>{frontmatter.cover_caption}</span>
             </PostImgCaption>
           </figure>
           <PostTitleWrapper>

@@ -3,9 +3,8 @@ date: "2019-03-14T01:00:00Z"
 title: "Initial post."
 description: "So it begins."
 img: "init.png"
-img_alt: "Post init."
-img_caption_text: "So it begins."
-img_caption_link: ""
+cover_alt: "Post init."
+cover_caption: "So it begins."
 keywords: "sharing, knowledge"
 ---
 > **I know this post may sound a little cliche, but, regardless of whether it is or not, it represents what I believe.**

@@ -1,13 +1,12 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
-*/
-
 const path = require('path');
-const {
-  createFilePath  
-} = require('gatsby-source-filesystem');
+const { createFilePath } = require('gatsby-source-filesystem');
+
+const getMarkdownFileType = path => {
+  // Check if it is a post
+  if (/\/posts\/.*/.test(path)) {
+    return 'post';
+  }
+};
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
@@ -16,14 +15,19 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     const slug = createFilePath({
       node,
       getNode,
-      basePath: 'src/posts',
       trailingSlash: false
     });
 
     createNodeField({
       node,
       name: `slug`,
-      value: slug,
+      value: slug.replace('/content', '')
+    });
+
+    createNodeField({
+      node,
+      name: 'type',
+      value: getMarkdownFileType(node.fileAbsolutePath)
     });
   }
 };
@@ -36,15 +40,21 @@ exports.createPages = async ({ actions, graphql }) => {
     data
   } = await graphql(`
     {
-      allMarkdownRemark {
+      allMarkdownRemark (
+        filter: {
+          fields: {
+            type: {
+              eq: "post"
+            }
+          }
+        }
+      ) {
         edges {
           node {
             fields {
               slug
             }
-            frontmatter {
-              img
-            }
+            fileAbsolutePath
           }
         }
       }
@@ -58,7 +68,7 @@ exports.createPages = async ({ actions, graphql }) => {
     component: blogPostTemplate,
     context: {
       slug: node.fields.slug,
-      img: node.frontmatter.img
+      coverImgGlob: path.resolve(node.fileAbsolutePath, '..', 'cover*')
     }
   }));
 };
