@@ -36,6 +36,13 @@ export const query = graphql`
       }
     }
     allMarkdownRemark (
+      filter: {
+        fields: {
+          type: {
+            eq: "post"
+          }
+        }
+      }
       sort: {
         order: DESC,
         fields: [

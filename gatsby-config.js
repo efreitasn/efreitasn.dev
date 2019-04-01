@@ -25,7 +25,26 @@ module.exports = {
     'gatsby-plugin-typescript',
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    'gatsby-transformer-remark',
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        plugins: [
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 900
+            }
+          }
+        ]
+      }
+    },
     {
       resolve: 'gatsby-plugin-feed',
       options: {
@@ -118,13 +137,6 @@ module.exports = {
       options: {
         component: `${__dirname}/src/components/Layout.tsx`
       }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
     },
     {
       resolve: `gatsby-source-filesystem`,
