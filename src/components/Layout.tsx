@@ -105,13 +105,13 @@ function Layout({ children }: Props) {
           {children}
         </LayoutMain>
         <LayoutFooter>
+          <Link to="/about">About</Link>
+          <LayoutFooterSplitter />
           <Link
             to={site.siteMetadata.feedUrl}
             rel="noopener noreferrer"
             target="_blank"
           >RSS</Link>
-          <LayoutFooterSplitter />
-          <Link to="/about">About</Link>
         </LayoutFooter>
       </LayoutWrapperStyled>
     </>
