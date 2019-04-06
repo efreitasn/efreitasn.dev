@@ -19,7 +19,8 @@
     },
     "types": [
       "styled-components",
-      "react-helmet"
+      "react-helmet",
+      "jest"
     ]
   }
 }
