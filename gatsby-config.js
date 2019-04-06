@@ -36,6 +36,7 @@ module.exports = {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
+          'gatsby-remark-mustache-with-siteMetadata',
           {
             resolve: 'gatsby-remark-images',
             options: {

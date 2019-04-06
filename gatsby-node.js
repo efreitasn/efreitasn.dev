@@ -63,12 +63,16 @@ exports.createPages = async ({ actions, graphql }) => {
 
   if (errors) throw errors;
 
-  data.allMarkdownRemark.edges.forEach(({ node }) => createPage({
-    path: `/posts${node.fields.slug}`,
-    component: blogPostTemplate,
-    context: {
-      slug: node.fields.slug,
-      coverImgGlob: path.resolve(node.fileAbsolutePath, '..', 'cover*')
-    }
-  }));
+  const { edges } = data.allMarkdownRemark;
+  
+  for (const { node } of edges) {
+    createPage({
+      path: `/posts${node.fields.slug}`,
+      component: blogPostTemplate,
+      context: {
+        slug: node.fields.slug,
+        coverImgGlob: path.resolve(node.fileAbsolutePath, '..', 'cover*')
+      }
+    });
+  }
 };
