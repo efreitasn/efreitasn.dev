@@ -4,8 +4,8 @@ const FEED_FILE = 'rss.xml';
 
 module.exports = {
   siteMetadata: {
-    title: `efreitasn`,
-    description: `A front-end dev.`,
+    title: 'efreitasn',
+    description: 'A front-end dev.',
     siteUrl: 'https://efreitasn.dev',
     feedUrl: `https://efreitasn.dev/${FEED_FILE}`,
     author: {
@@ -23,12 +23,12 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-typescript',
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `images`,
+        name: 'images',
         path: `${__dirname}/src/images`,
       },
     },
@@ -80,7 +80,14 @@ module.exports = {
             query: `
               {
                 allMarkdownRemark(
-                  limit: 100,
+                  limit: 100
+                  filter: {
+                    frontmatter: {
+                      showInFeed: {
+                        eq: true
+                      }
+                    }
+                  }
                   sort: {
                     order: DESC,
                     fields: [
@@ -133,41 +140,41 @@ module.exports = {
         trackingId: process.env.ANALYTICS_ID
       },
     },
-    `gatsby-plugin-react-helmet`,
+    'gatsby-plugin-react-helmet',
     {
-      resolve: `gatsby-plugin-layout`,
+      resolve: 'gatsby-plugin-layout',
       options: {
-        component: `${__dirname}/src/components/Layout.tsx`
+        component: `${__dirname}/src/components/Layout/index.tsx`
       }
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `posts`,
+        name: 'posts',
         path: `${__dirname}/src/posts`,
       },
     },
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-plugin-manifest',
       options: {
-        name: `efreitasn`,
-        short_name: `efreitasn`,
-        start_url: `/`,
-        background_color: `#EDEDED`,
-        theme_color: `#17677F`,
-        display: `standalone`,
-        icon: `src/images/icon.png`
+        name: 'efreitasn',
+        short_name: 'efreitasn',
+        start_url: '/',
+        background_color: '#EDEDED',
+        theme_color: '#17677F',
+        display: 'standalone',
+        icon: 'src/images/icon.png'
       },
     },
-    `gatsby-plugin-styled-components`,
+    'gatsby-plugin-styled-components',
     {
-      resolve: `gatsby-plugin-alias-imports`,
+      resolve: 'gatsby-plugin-alias-imports',
       options: {
         alias: {
           'Components': resolve(__dirname, 'src/components'),
-          'Pages': resolve(__dirname, 'src/pages'),
           'Styles': resolve(__dirname, 'src/styles'),
-          'Icons': resolve(__dirname, 'src/icons')
+          'Utils': resolve(__dirname, 'src/utils'),
+          'Types': resolve(__dirname, 'src/types')
         },
         extensions: []
       }

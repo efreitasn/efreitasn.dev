@@ -1,17 +1,10 @@
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
 
-const getMarkdownFileType = path => {
-  // Check if it is a post
-  if (/\/posts\/.*/.test(path)) {
-    return 'post';
-  }
-};
-
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
 
-  if (node.internal.type === `MarkdownRemark`) {
+  if (node.internal.type === 'MarkdownRemark') {
     const slug = createFilePath({
       node,
       getNode,
@@ -20,35 +13,21 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
     createNodeField({
       node,
-      name: `slug`,
+      name: 'slug',
       value: slug.replace('/content', '')
-    });
-
-    createNodeField({
-      node,
-      name: 'type',
-      value: getMarkdownFileType(node.fileAbsolutePath)
     });
   }
 };
 
 exports.createPages = async ({ actions, graphql }) => {
-  const blogPostTemplate = path.resolve(`src/templates/post.tsx`);
+  const blogPostTemplate = path.resolve('src/templates/post.tsx');
   const { createPage } = actions;
   const {
     errors,
     data
   } = await graphql(`
     {
-      allMarkdownRemark (
-        filter: {
-          fields: {
-            type: {
-              eq: "post"
-            }
-          }
-        }
-      ) {
+      allMarkdownRemark {
         edges {
           node {
             fields {

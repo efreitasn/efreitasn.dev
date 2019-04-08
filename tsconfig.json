@@ -13,9 +13,9 @@
     "baseUrl": ".",
     "paths": {
       "Components/*": ["src/components/*"],
-      "Pages": ["src/pages"],
       "Styles/*": ["src/styles/*"],
-      "Icons": ["src/icons"]
+      "Utils/*": ["src/utils/*"],
+      "Types/*": ["src/types/*"]
     },
     "types": [
       "styled-components",

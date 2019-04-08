@@ -2,13 +2,13 @@ import React from 'react';
 import { graphql } from 'gatsby';
 // Components
 import PostItem from 'Components/PostItem';
-import SEOPage from 'Components/SEO/Page';
+import SEO from 'Components/SEO';
 
 interface Props {
   data: {
     site: {
       siteMetadata: {
-        title: string
+        description: string
       }
     },
     allMarkdownRemark: {
@@ -32,14 +32,14 @@ export const query = graphql`
   {
     site {
       siteMetadata {
-        title
+        description
       }
     }
     allMarkdownRemark (
       filter: {
-        fields: {
-          type: {
-            eq: "post"
+        frontmatter: {
+          showInFeed: {
+            eq: true
           }
         }
       }
@@ -71,11 +71,12 @@ const IndexPage = ({
 }: Props) => {
   return (
     <>
-      <SEOPage
+      <SEO
         title="Home"
+        description={data.site.siteMetadata.description}
         keywords={['developer', 'front-end']}
       />
-      <div>
+      <>
         {data.allMarkdownRemark.edges.map(({
           node: {
             frontmatter,
@@ -90,7 +91,7 @@ const IndexPage = ({
             date={frontmatter.date}
           />
         ))}
-      </div>
+      </>
     </>
   );
 };
