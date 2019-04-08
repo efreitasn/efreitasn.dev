@@ -1,15 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
 import { graphql } from 'gatsby';
-import SEOPost from 'Components/SEO/Post';
-import PageTitle from 'Components/PageTitle';
-import PageContent from 'Components/PageContent';
-import {
-  COLOR_GREY_3
-} from 'Styles/colors';
-import moment from 'moment';
-import { bk2 } from 'Styles/breakpoints';
-import GatsbyImage, { FluidObject } from 'gatsby-image';
+import { FluidObject } from 'gatsby-image';
+import SEO from 'Components/SEO';
+import Nullable from 'Types/Nullable';
+import Post from 'Components/Post';
 
 interface Props {
   data: {
@@ -19,16 +13,16 @@ interface Props {
         date: string;
         title: string;
         description: string;
-        cover_alt: string;
-        cover_caption: string;
+        cover_alt: Nullable<string>;
+        cover_caption: Nullable<string>;
         keywords: string;
       }
     }
-    file: {
+    file: Nullable<{
       childImageSharp: {
         fluid: FluidObject
       }
-    }
+    }>
   }
 };
 
@@ -64,34 +58,6 @@ export const query = graphql`
   }
 `;
 
-const PostImgCaption = styled.figcaption`
-  color: ${COLOR_GREY_3};
-  font-size: 1.4rem;
-  padding: 1.5rem 2rem;
-  text-align: center;
-  line-height: 1.4;
-  margin-top: -4px;
-`;
-
-const PostTitle = styled(PageTitle)`
-  margin-bottom: 0;
-  margin-top: 0;
-`;
-
-const PostDate = styled.time`
-  color: ${COLOR_GREY_3};
-  padding: 0 4rem;
-
-  ${bk2`
-    padding: 0 2rem
-  `}
-`;
-
-const PostTitleWrapper = styled.div`
-  margin-bottom: 2rem;
-  margin-top: 1.5rem;
-`;
-
 export default function PostTemplate({
   data
 }: Props) {
@@ -102,32 +68,23 @@ export default function PostTemplate({
 
   return (
     <>
-      <SEOPost
+      <SEO
         title={frontmatter.title}
         description={frontmatter.description}
-        keywords={frontmatter.keywords}
-        image={data.file.childImageSharp.fluid.src}
-        imageAlt={frontmatter.cover_alt}
+        keywords={frontmatter.keywords.split(', ')}
+        image={data.file ? data.file.childImageSharp.fluid.src : undefined}
+        imageAlt={frontmatter.cover_alt ? frontmatter.cover_alt : undefined}
+        article
       />
       <article>
-        <header>
-          <figure>
-            <GatsbyImage
-              fluid={data.file.childImageSharp.fluid}
-              alt={frontmatter.cover_alt}
-            />
-            <PostImgCaption>
-              <span>{frontmatter.cover_caption}</span>
-            </PostImgCaption>
-          </figure>
-          <PostTitleWrapper>
-            <PostTitle>{frontmatter.title}</PostTitle>
-            <PostDate dateTime={frontmatter.date}>{moment(frontmatter.date).format('MMMM DD, YYYY')}</PostDate>
-          </PostTitleWrapper>
-        </header>
-        <PageContent dangerouslySetInnerHTML={{
-          __html: html
-        }} />
+        <Post
+          title={frontmatter.title}
+          createdAt={frontmatter.date}
+          cover={data.file ? data.file.childImageSharp.fluid : undefined}
+          coverAlt={frontmatter.cover_alt ? frontmatter.cover_alt : undefined}
+          coverCaption={frontmatter.cover_caption ? frontmatter.cover_caption : undefined}
+          content={html}
+        />
       </article>
     </>
   );

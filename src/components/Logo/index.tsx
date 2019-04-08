@@ -1,14 +1,20 @@
-import * as React from 'react';
+import React from 'react';
+import styled from 'styled-components';
 import {
   COLOR_PRIMARY,
   COLOR_SECONDARY
 } from 'Styles/colors';
 
-type Props = {
-  titleColor: string,
-  subtitleColor: string,
+interface Props {
+  titleColor: string
+  subtitleColor: string
   showSubtitle: boolean
 };
+
+const LogoStyled = styled.svg`
+  height: auto;
+  width: 100%;
+`;
 
 function Logo ({
   titleColor,
@@ -16,14 +22,10 @@ function Logo ({
   showSubtitle
 }: Props) {
   return (
-    <svg
+    <LogoStyled
       xmlns="http://www.w3.org/2000/svg"
       viewBox={`0 0 1023.2 ${showSubtitle ? '260' : '227'}`}
       strokeDashoffset={1000}
-      style={{
-        width: '100%',
-        height: 'auto'
-      }}
     >
       <title>efreitasn</title>
       <g id="title" name="title" style={{
@@ -58,7 +60,7 @@ function Logo ({
           <path d="m1018.5 241.4v-0.3c0-0.1 0.1-0.3 0.2-0.5l0.3-0.6c0.2-0.3 0.5-0.5 1-0.7 0.3-0.1 0.6-0.1 0.8-0.2 0.3 0 0.5 0.1 0.7 0.2s0.3 0.3 0.4 0.6v0.6l0.2 0.2c0.1 0.1 0.2 0.3 0.2 0.4 0 0.3-0.2 0.6-0.7 1-0.4 0.3-0.9 0.4-1.4 0.4-0.3 0-0.5 0-0.7-0.1s-0.4-0.2-0.6-0.4-0.3-0.4-0.3-0.6c-0.1 0.1-0.1 0-0.1 0z" />
         </g>
       )}
-    </svg>
+    </LogoStyled>
   );
 }
 

@@ -5,8 +5,7 @@ import {
   COLOR_GREY_4
 } from 'Styles/colors';
 
-const PageContent = styled.div`
-  margin-bottom: 3rem;
+const PostContent = styled.div`
   line-height: 2.4rem;
   text-align: justify;
 
@@ -43,4 +42,4 @@ const PageContent = styled.div`
   }
 `;
 
-export default PageContent;
+export default PostContent;

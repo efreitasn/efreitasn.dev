@@ -15,13 +15,16 @@ interface Props {
   }>;
   keywords: string[];
   title: string;
-  indexPage: boolean;
-  ogType: 'website' | 'article';
-  image: string;
-  imageAlt: string;
+  index: boolean;
+  article: boolean;
+  image?: string;
+  imageAlt?: string;
 }
 
 interface SEOQuery {
+  file: {
+    publicURL: string
+  }
   site: {
     siteMetadata: {
       title: string;
@@ -36,6 +39,11 @@ interface SEOQuery {
 
 const seoQuery = graphql`
   query SEOQuery {
+    file(base: {
+      eq: "the-default.png"
+    }) {
+      publicURL
+    }
     site {
       siteMetadata {
         title
@@ -55,15 +63,19 @@ const SEO = ({
   meta,
   keywords,
   title: titleProps,
-  indexPage,
-  ogType,
+  index,
+  article,
   image: imageProps,
   imageAlt
 }: Props) => {
-  const { site }: SEOQuery = useStaticQuery(seoQuery);
-  const metaRobots = indexPage ? 'index, follow' : 'noindex, nofollow';
+  const {
+    site,
+    file
+  }: SEOQuery = useStaticQuery(seoQuery);
+  const metaRobots = index ? 'index, follow' : 'noindex, nofollow';
   const title = `${titleProps} - ${site.siteMetadata.title}`;
-  const image = `${site.siteMetadata.siteUrl}${imageProps}`;
+  const image = `${site.siteMetadata.siteUrl}${imageProps || file.publicURL}`;
+  const ogType = article ? 'article' : 'website';
 
   return (
     <Helmet
@@ -150,7 +162,8 @@ SEO.defaultProps = {
   lang: 'en',
   meta: [],
   keywords: [],
-  indexPage: true
+  index: true,
+  article: false
 };
 
 export default SEO;

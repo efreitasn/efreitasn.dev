@@ -1,5 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { Link as GatsbyLink } from 'gatsby';
+import isLocalLinkUtil from 'Utils/isLocalLink';
 
 interface Props {
   to: string;
@@ -10,8 +11,6 @@ interface Props {
   title?: string;
 };
 
-const isLocalLinkCheck = (link: string): boolean => /^\/.*/i.test(link);
-
 const Link = ({
   to,
   target,
@@ -20,7 +19,7 @@ const Link = ({
   title,
   rel
 }: Props) => {
-  const isLocalLink = isLocalLinkCheck(to);
+  const isLocalLink = isLocalLinkUtil(to);
 
   return isLocalLink ? (
     <GatsbyLink
