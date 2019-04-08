@@ -14,7 +14,7 @@ const nonLocalLinks = [
 
 describe('utils/isLocalLink', () => {
   for (const [index, localLink] of localLinks.entries()) {
-    it(`should identify a local link ${index + 1}`, () => {
+    it(`should identify a local link (${index + 1})`, () => {
       const result = isLocalLink(localLink);
 
       expect(result).toBe(true);
@@ -22,7 +22,7 @@ describe('utils/isLocalLink', () => {
   }
 
   for (const [index, nonLocalLink] of nonLocalLinks.entries()) {
-    it(`should identify a non-local link ${index + 1}`, () => {
+    it(`should identify a non-local link (${index + 1})`, () => {
       const result = isLocalLink(nonLocalLink);
 
       expect(result).toBe(false);
