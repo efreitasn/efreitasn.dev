@@ -24,7 +24,7 @@ interface Props {
 interface SEOQuery {
   file: {
     publicURL: string
-  }
+  };
   site: {
     siteMetadata: {
       title: string;
@@ -34,8 +34,8 @@ interface SEOQuery {
         twitter: string;
       }
     }
-  }
-};
+  };
+}
 
 const seoQuery = graphql`
   query SEOQuery {
@@ -84,73 +84,73 @@ const SEO = ({
       meta={[
         // Colors
         {
-          name: 'theme-color',
-          content: COLOR_PRIMARY
+          content: COLOR_PRIMARY,
+          name: 'theme-color'
         },
         {
-          name: 'msapplication-navbutton-color',
-          content: COLOR_PRIMARY
+          content: COLOR_PRIMARY,
+          name: 'msapplication-navbutton-color'
         },
         {
-          name: 'apple-mobile-web-app-status-bar-style',
-          content: COLOR_PRIMARY
+          content: COLOR_PRIMARY,
+          name: 'apple-mobile-web-app-status-bar-style'
         },
         // Open graph
         {
-          property: 'og:title',
-          content: title
+          content: title,
+          property: 'og:title'
         },
         {
-          property: 'og:description',
-          content: description
+          content: description,
+          property: 'og:description'
         },
         {
-          property: 'og:type',
-          content: ogType
+          content: ogType,
+          property: 'og:type'
         },
         {
-          property: 'og:image',
-          content: image
+          content: image,
+          property: 'og:image'
         },
         // Twitter
         {
-          name: 'twitter:card',
-          content: 'summary_large_image'
+          content: 'summary_large_image',
+          name: 'twitter:card'
         },
         {
-          name: 'twitter:creator',
-          content: site.siteMetadata.author.twitter
+          content: site.siteMetadata.author.twitter,
+          name: 'twitter:creator'
         },
         {
-          name: 'twitter:title',
-          content: title
+          content: title,
+          name: 'twitter:title'
         },
         {
-          name: 'twitter:description',
-          content: description
+          content: description,
+          name: 'twitter:description'
         },
         {
-          name: 'twitter:image',
-          content: image
+          content: image,
+          name: 'twitter:image'
         },
         {
-          name: 'twitter:image:alt',
-          content: imageAlt
+          content: imageAlt,
+          name: 'twitter:image:alt'
         },
         // Others
         {
-          name: 'description',
-          content: description
+          content: description,
+          name: 'description'
         },
         {
-          name: 'robots',
-          content: metaRobots
+          content: metaRobots,
+          name: 'robots'
         }
       ].concat(
         keywords.length > 0
           ? {
-            name: 'keywords',
-            content: keywords.join(`, `)
+            content: keywords.join(`, `),
+            name: 'keywords'
           }
           : []
       ).concat(meta)}
@@ -159,11 +159,11 @@ const SEO = ({
 };
 
 SEO.defaultProps = {
-  lang: 'en',
-  meta: [],
-  keywords: [],
+  article: false,
   index: true,
-  article: false
+  keywords: [],
+  lang: 'en',
+  meta: []
 };
 
 export default SEO;

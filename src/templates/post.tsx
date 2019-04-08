@@ -23,8 +23,8 @@ interface Props {
         fluid: FluidObject
       }
     }>
-  }
-};
+  };
+}
 
 export const query = graphql`
   query BlogPostBySlug(
@@ -88,4 +88,4 @@ export default function PostTemplate({
       </article>
     </>
   );
-};
+}

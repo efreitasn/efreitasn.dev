@@ -1,4 +1,4 @@
-import isLocalLink from "Utils/isLocalLink";
+import isLocalLink from 'Utils/isLocalLink';
 
 const localLinks = [
   '/about',

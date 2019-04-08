@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { COLOR_GREY_3 } from 'Styles/colors';
 
 interface Props {
-  description: string
+  description: string;
 }
 
 const PostItemDescriptionStyled = styled.p`
@@ -19,5 +19,5 @@ export default function PostItemDescription({
     <PostItemDescriptionStyled>
       {description}
     </PostItemDescriptionStyled>
-  )
+  );
 }

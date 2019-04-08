@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { bk2 } from 'Styles/breakpoints';
 
 interface Props {
-  title: string
+  title: string;
 }
 
 const PostHeaderTitleStyled = styled.h1`

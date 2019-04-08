@@ -4,9 +4,9 @@ import GatsbyImage, { FluidObject } from 'gatsby-image';
 import { COLOR_GREY_3 } from 'Styles/colors';
 
 interface Props {
-  image: FluidObject
-  imageAlt: string
-  caption?: string
+  image: FluidObject;
+  imageAlt: string;
+  caption?: string;
 }
 
 const PostHeaderFigureCaption = styled.figcaption`

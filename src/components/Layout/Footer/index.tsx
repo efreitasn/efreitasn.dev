@@ -8,7 +8,7 @@ interface Props {
     to: string,
     text: string,
     newTab: boolean
-  }>
+  }>;
 }
 
 const LayoutFooterStyled = styled.footer`
