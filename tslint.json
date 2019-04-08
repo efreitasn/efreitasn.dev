@@ -1,0 +1,51 @@
+{
+  "defaultSeverity": "error",
+  "jsRules": {},
+  "extends": [
+    "tslint-react"
+  ],
+  "rules": {
+    "no-parameter-reassignment": true,
+    "no-conditional-assignment": true,
+    "no-shadowed-variable": true,
+    "no-switch-case-fall-through": true,
+    "triple-equals": true,
+    "object-literal-sort-keys": true,
+    "unnecessary-else": true,
+    "jsx-no-multiline-js": false,
+    "jsx-self-close": true,
+    "jsx-space-before-trailing-slash": true,
+    "jsx-wrap-multiline": true,
+    "jsx-boolean-value": [
+      true,
+      "never"
+    ],
+    "indent": [
+      true,
+      "spaces",
+      2
+    ],
+    "semicolon": [
+      true,
+      "always"
+    ],
+    "quotemark": [
+      true,
+      "single",
+      "jsx-double"
+    ],
+    "trailing-comma": [
+      true,
+      {
+        "multiline": "never",
+        "singleline": "never"
+      }
+    ]
+  },
+  "rulesDirectory": [],
+  "linterOptions": {
+    "exclude": [
+      "node_modules/**"
+    ]
+  }
+}
