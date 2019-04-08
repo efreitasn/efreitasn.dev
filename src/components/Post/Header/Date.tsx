@@ -1,12 +1,12 @@
 import React from 'react';
-import styled from "styled-components";
-import { COLOR_GREY_3 } from "Styles/colors";
+import styled from 'styled-components';
+import { COLOR_GREY_3 } from 'Styles/colors';
 import moment from 'moment';
 import { bk2 } from 'Styles/breakpoints';
 
 interface Props {
-  classNamew?: string
-  date: string
+  classNamew?: string;
+  date: string;
 }
 
 const PostHeaderDateStyled = styled.time`

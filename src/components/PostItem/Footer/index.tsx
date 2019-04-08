@@ -4,7 +4,7 @@ import moment from 'moment';
 import { COLOR_GREY_4 } from 'Styles/colors';
 
 interface Props {
-  createdAt: string
+  createdAt: string;
 }
 
 const PostItemFooterStyled = styled.footer`
@@ -28,7 +28,9 @@ export default function PostItemFooter({
       <DateStyled
         title={momentDate.format('MM/DD/YYYY hh:mma')}
         dateTime={createdAt}
-      >{momentDate.from()}</DateStyled>
+      >
+        {momentDate.from()}
+      </DateStyled>
     </PostItemFooterStyled>
   );
 }

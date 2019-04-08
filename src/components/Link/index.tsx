@@ -9,7 +9,7 @@ interface Props {
   className?: string;
   rel?: string;
   title?: string;
-};
+}
 
 const Link = ({
   to,

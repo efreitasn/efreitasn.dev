@@ -25,7 +25,7 @@ interface Props {
         }
       }>
     }
-  }
+  };
 }
 
 export const query = graphql`

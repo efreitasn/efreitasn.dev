@@ -14,8 +14,8 @@ import LayoutMain from './Main';
 import LayoutHeader from './Header';
 
 interface Props {
-  children: ReactNode
-};
+  children: ReactNode;
+}
 
 type LayoutQuery = {
   site: {

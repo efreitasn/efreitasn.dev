@@ -10,7 +10,7 @@ interface Props {
   description: string;
   url: string;
   date: string;
-};
+}
 
 const PostItemStyled = styled.article`
   padding: 3rem 4rem;

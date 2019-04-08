@@ -5,12 +5,12 @@ import PostContent from 'Components/Post/Content';
 import styled from 'styled-components';
 
 interface Props {
-  content: string,
-  title: string
-  cover?: FluidObject
-  coverAlt?: string,
-  coverCaption?: string,
-  createdAt?: string
+  content: string;
+  title: string;
+  cover?: FluidObject;
+  coverAlt?: string;
+  coverCaption?: string;
+  createdAt?: string;
 }
 
 const PostStyled = styled.div`
@@ -34,9 +34,11 @@ export default function Post({
         createdAt={createdAt}
         cover={cover}
       />
-      <PostContent dangerouslySetInnerHTML={{
-        __html: content
-      }} />
+      <PostContent
+        dangerouslySetInnerHTML={{
+          __html: content
+        }}
+      />
     </PostStyled>
   );
 }

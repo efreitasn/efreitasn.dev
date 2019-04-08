@@ -1,8 +1,8 @@
 import React from 'react';
-import styled from "styled-components";
+import styled from 'styled-components';
 
 interface Props {
-  title: string
+  title: string;
 }
 
 const PostItemHeaderTitleStyled = styled.h2`

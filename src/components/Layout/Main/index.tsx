@@ -4,8 +4,8 @@ import { shadow1 } from 'Styles/shadows';
 import { bk2 } from 'Styles/breakpoints';
 
 interface Props {
-  content: ReactNode
-};
+  content: ReactNode;
+}
 
 const LayoutMainStyled = styled.main`
   background-color: #FFFFFF;
