@@ -48,6 +48,20 @@ const GlobalStyles = createGlobalStyle`
   p {
     line-height: 1.8;
   }
+
+  .gatsby-highlight pre[class*="language-"] {
+    border: 0;
+    border-radius: 0;
+    box-shadow: unset;
+    padding: 2rem 4rem;
+  }
+
+  .gatsby-highlight-code-line {
+    background-color: rgba(0, 0, 0, 0.2);
+    display: block;
+    margin: 0 -4rem;
+    padding: 0 4rem;
+  }
 `;
 
 export default GlobalStyles;

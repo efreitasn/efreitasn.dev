@@ -37,6 +37,7 @@ module.exports = {
       options: {
         plugins: [
           'gatsby-remark-mustache-with-siteMetadata',
+          'gatsby-remark-prismjs',
           {
             resolve: 'gatsby-remark-images',
             options: {

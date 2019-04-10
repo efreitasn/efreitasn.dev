@@ -10,11 +10,8 @@ const PostContent = styled.div`
   text-align: justify;
 
   & > p {
+    margin: 1rem 0;
     padding: 0 4rem;
-
-    &:not(:last-child) {
-      margin-bottom: 2rem;
-    }
 
     ${bk2`
       padding: 0 2rem
@@ -25,20 +22,20 @@ const PostContent = styled.div`
     background: ${COLOR_GREY_1};
     border-radius: 10px;
     color: ${COLOR_GREY_4};
-    margin: 0 4rem;
+    margin: 2rem 4rem;
     padding: 1.5rem 2.5rem;
 
     ${bk2`
       margin: 0 2rem;
     `}
 
-    &:not(:last-child) {
-      margin-bottom: 2rem;
-    }
-
     & > p {
       padding: 0;
     }
+  }
+
+  & .gatsby-highlight {
+    margin: 2rem 0;
   }
 `;
 
