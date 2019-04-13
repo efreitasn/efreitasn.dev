@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { COLOR_GREY_3 } from 'Styles/colors';
 import moment from 'moment';
 import { bk2 } from 'Styles/breakpoints';
 
@@ -10,7 +9,7 @@ interface Props {
 }
 
 const PostHeaderDateStyled = styled.time`
-  color: ${COLOR_GREY_3};
+  color: ${({ theme }) => theme.colors.otherText};
   padding: 0 4rem;
 
   ${bk2`

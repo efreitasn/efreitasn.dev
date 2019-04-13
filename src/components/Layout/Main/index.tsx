@@ -8,11 +8,12 @@ interface Props {
 }
 
 const LayoutMainStyled = styled.main`
-  background-color: #FFFFFF;
+  background-color: ${({ theme }) => theme.colors.mainBg};
   border-radius: 15px;
   box-shadow: ${shadow1};
   /* overflow because of the border-radius */
   overflow: hidden;
+  transition: ${({ theme }) => theme.transitions.bg};
 
   ${bk2`
     border-radius: 0;

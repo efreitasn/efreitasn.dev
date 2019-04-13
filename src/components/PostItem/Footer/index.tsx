@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
-import { COLOR_GREY_4 } from 'Styles/colors';
 
 interface Props {
   createdAt: string;
@@ -14,7 +13,7 @@ const PostItemFooterStyled = styled.footer`
 `;
 
 const DateStyled = styled.time`
-  color: ${COLOR_GREY_4};
+  color: ${({ theme }) => theme.colors.otherText};
   font-size: 1.2rem;
 `;
 

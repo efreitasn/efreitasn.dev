@@ -1,9 +1,10 @@
 import React, { ReactNode } from 'react';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import {
   graphql,
   useStaticQuery
 } from 'gatsby';
+import useDarkMode from 'use-dark-mode';
 import GlobalStyles from 'Styles/GlobalStyles';
 import {
   bk1,
@@ -12,6 +13,9 @@ import {
 import LayoutFooter from './Footer';
 import LayoutMain from './Main';
 import LayoutHeader from './Header';
+
+import DarkModeToggle from './DarkModeToggle';
+import { darkTheme, lightTheme } from './themes';
 
 interface Props {
   children: ReactNode;
@@ -53,28 +57,40 @@ export default function Layout({
   children
 }: Props) {
   const { site }: LayoutQuery = useStaticQuery(layoutQuery);
+  const {
+    value: isDark,
+    toggle: toggleDark
+  } = useDarkMode(false);
 
   return (
     <>
-      <GlobalStyles />
-      <LayoutStyled>
-        <LayoutHeader />
-        <LayoutMain content={children} />
-        <LayoutFooter
-          links={[
-            {
-              newTab: false,
-              text: 'About',
-              to: '/posts/about'
-            },
-            {
-              newTab: true,
-              text: 'RSS',
-              to: site.siteMetadata.feedUrl
-            }
-          ]}
-        />
-      </LayoutStyled>
+      <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+        <>
+          <DarkModeToggle
+            dark={isDark}
+            toggleDark={toggleDark}
+          />
+          <GlobalStyles />
+          <LayoutStyled>
+            <LayoutHeader />
+            <LayoutMain content={children} />
+            <LayoutFooter
+              links={[
+                {
+                  newTab: false,
+                  text: 'About',
+                  to: '/posts/about'
+                },
+                {
+                  newTab: true,
+                  text: 'RSS',
+                  to: site.siteMetadata.feedUrl
+                }
+              ]}
+            />
+          </LayoutStyled>
+        </>
+      </ThemeProvider>
     </>
   );
 }

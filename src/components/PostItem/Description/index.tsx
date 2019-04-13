@@ -1,13 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { COLOR_GREY_3 } from 'Styles/colors';
 
 interface Props {
   description: string;
 }
 
 const PostItemDescriptionStyled = styled.p`
-  color: ${COLOR_GREY_3};
+  color: ${({ theme }) => theme.colors.otherText};
   font-size: 1.6rem;
   margin-bottom: 1rem;
 `;

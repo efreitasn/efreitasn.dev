@@ -1,16 +1,12 @@
 import styled from 'styled-components';
-import {
-  COLOR_PRIMARY_DARK,
-  COLOR_PRIMARY
-} from 'Styles/colors';
+import { COLOR_SECONDARY } from 'Styles/colors';
 import Link from 'Components/Link';
 
 const PostItemHeaderLink = styled(Link)`
-  color: ${COLOR_PRIMARY_DARK};
   text-decoration: none;
 
   &:hover {
-    color: ${COLOR_PRIMARY};
+    color: ${COLOR_SECONDARY};
   }
 `;
 

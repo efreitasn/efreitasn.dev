@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BG_COLOR } from 'Styles/colors';
 import PostItemHeader from './Header';
 import PostItemDescription from './Description';
 import PostItemFooter from './Footer';
@@ -15,12 +14,13 @@ interface Props {
 const PostItemStyled = styled.article`
   padding: 3rem 4rem;
 
-  &:nth-child(even) {
-    background-color: #f5f5f5;
-  }
+  /* when it hits 3 posts :) */
+  /* &:nth-child(even) {
+    background-color: ${({ theme }) => theme.colors.bodyBg};
+  } */
 
   &:not(:last-child) {
-    border-bottom: 2px solid ${BG_COLOR};
+    border-bottom: 2px solid ${({ theme }) => theme.colors.bodyBg};
   }
 `;
 
