@@ -1,34 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
-import {
-  BG_COLOR,
-  COLOR_PRIMARY,
-  COLOR_BLACK
-} from 'Styles/colors';
 
 const GlobalStyles = createGlobalStyle`
   * {
     box-sizing: border-box;
-  }
-
-  html {
-    /* 1rem = 10px */
-    font-size: 62.5%;
-  }
-
-  body {
-    background-color: ${BG_COLOR};
-    color: ${COLOR_BLACK};
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.6rem;
-  }
-
-  a {
-    color: ${COLOR_PRIMARY};
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
   }
 
   h1,
@@ -43,6 +17,28 @@ const GlobalStyles = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
+  }
+
+  html {
+    /* 1rem = 10px */
+    font-size: 62.5%;
+  }
+
+  body {
+    background-color: ${({ theme }) => theme.colors.bodyBg};
+    color: ${({ theme }) => theme.colors.bodyText};
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.6rem;
+    transition: ${({ theme }) => theme.transitions.bg}
+  }
+
+  a {
+    color: ${({ theme }) => theme.colors.link};
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   p {

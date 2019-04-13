@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 import { bk2 } from 'Styles/breakpoints';
-import {
-  COLOR_GREY_1,
-  COLOR_GREY_4
-} from 'Styles/colors';
 
 const PostContent = styled.div`
   line-height: 2.4rem;
@@ -19,11 +15,12 @@ const PostContent = styled.div`
   }
 
   & > blockquote {
-    background: ${COLOR_GREY_1};
+    background-color: ${({ theme }) => theme.colors.bodyBg};
     border-radius: 10px;
-    color: ${COLOR_GREY_4};
+    color: ${({ theme }) => theme.colors.otherText};
     margin: 2rem 4rem;
     padding: 1.5rem 2.5rem;
+    transition: ${({ theme }) => theme.transitions.bg};
 
     ${bk2`
       margin: 0 2rem;

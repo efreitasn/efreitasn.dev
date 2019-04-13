@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import GatsbyImage, { FluidObject } from 'gatsby-image';
-import { COLOR_GREY_3 } from 'Styles/colors';
 
 interface Props {
   image: FluidObject;
@@ -10,7 +9,7 @@ interface Props {
 }
 
 const PostHeaderFigureCaption = styled.figcaption`
-  color: ${COLOR_GREY_3};
+  color: ${({ theme }) => theme.colors.otherText};
   font-size: 1.4rem;
   line-height: 1.4;
   margin-top: 1.5rem;
