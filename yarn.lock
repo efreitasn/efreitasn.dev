@@ -4595,7 +4595,7 @@ gatsby-plugin-manifest@^2.0.9:
     bluebird "^3.5.0"
     sharp "^0.21.3"
 
-gatsby-plugin-offline@^2.0.16:
+gatsby-plugin-offline@^2.0.25:
   version "2.0.25"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-offline/-/gatsby-plugin-offline-2.0.25.tgz#44839cd3ddb90c7478445c3a3c38fc8467b510a2"
   dependencies:
