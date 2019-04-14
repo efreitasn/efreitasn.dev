@@ -10,6 +10,7 @@ import {
   COLOR_PRIMARY,
   COLOR_PRIMARY_LIGHT
 } from 'Styles/colors';
+import { bk2 } from './breakpoints';
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -41,6 +42,10 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
     font-size: 1.6rem;
     ${({ theme }) => theme.transitions.bg ? `transition: ${theme.transitions.bg};` : ''};
+
+    ${bk2`
+      font-size: 1.8rem;
+    `}
   }
 
   body.dark {
@@ -66,10 +71,6 @@ const GlobalStyles = createGlobalStyle`
     &:hover {
       text-decoration: underline;
     }
-  }
-
-  p {
-    line-height: 1.8;
   }
 
   .gatsby-highlight pre[class*="language-"] {

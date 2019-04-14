@@ -7,7 +7,6 @@ interface Props {
 
 const PostItemDescriptionStyled = styled.p`
   color: var(--color-otherText);
-  font-size: 1.6rem;
   margin-bottom: 1rem;
 `;
 

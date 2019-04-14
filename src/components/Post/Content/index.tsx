@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { bk2 } from 'Styles/breakpoints';
 
 const PostContent = styled.div`
-  line-height: 2.4rem;
+  line-height: 3.2rem;
   text-align: justify;
 
   & > p {
@@ -10,7 +10,7 @@ const PostContent = styled.div`
     padding: 0 4rem;
 
     ${bk2`
-      padding: 0 2rem
+      padding: 0 2rem;
     `}
   }
 
