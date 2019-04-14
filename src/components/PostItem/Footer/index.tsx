@@ -13,7 +13,7 @@ const PostItemFooterStyled = styled.footer`
 `;
 
 const DateStyled = styled.time`
-  color: ${({ theme }) => theme.colors.otherText};
+  color: var(--color-otherText);
   font-size: 1.2rem;
 `;
 

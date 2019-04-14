@@ -1,10 +1,13 @@
-import React, { ReactNode } from 'react';
+import React, {
+  ReactNode,
+  useState,
+  useEffect
+} from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import {
   graphql,
   useStaticQuery
 } from 'gatsby';
-import useDarkMode from 'use-dark-mode';
 import GlobalStyles from 'Styles/GlobalStyles';
 import {
   bk1,
@@ -15,7 +18,11 @@ import LayoutMain from './Main';
 import LayoutHeader from './Header';
 
 import DarkModeToggle from './DarkModeToggle';
-import { darkTheme, lightTheme } from './themes';
+import {
+  firstRenderTheme,
+  subsequentRendersTheme
+} from './themes';
+import useDark from './useDark';
 
 interface Props {
   children: ReactNode;
@@ -57,18 +64,21 @@ export default function Layout({
   children
 }: Props) {
   const { site }: LayoutQuery = useStaticQuery(layoutQuery);
-  const {
-    value: isDark,
-    toggle: toggleDark
-  } = useDarkMode(false);
+  const [theme, setTheme] = useState(firstRenderTheme);
+  const [isDark, toggleIsDark] = useDark();
+
+  useEffect(
+    () => setTheme(subsequentRendersTheme),
+    []
+  );
 
   return (
     <>
-      <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+      <ThemeProvider theme={theme}>
         <>
           <DarkModeToggle
-            dark={isDark}
-            toggleDark={toggleDark}
+            isDark={isDark}
+            toggleIsDark={toggleIsDark}
           />
           <GlobalStyles />
           <LayoutStyled>

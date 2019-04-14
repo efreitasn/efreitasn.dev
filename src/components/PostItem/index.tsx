@@ -16,11 +16,11 @@ const PostItemStyled = styled.article`
 
   /* when it hits 3 posts :) */
   /* &:nth-child(even) {
-    background-color: ${({ theme }) => theme.colors.bodyBg};
+    background-color: var(--color-bodyBg);
   } */
 
   &:not(:last-child) {
-    border-bottom: 2px solid ${({ theme }) => theme.colors.bodyBg};
+    border-bottom: 2px solid var(--color-bodyBg);
   }
 `;
 

@@ -9,7 +9,7 @@ interface Props {
 }
 
 const PostHeaderFigureCaption = styled.figcaption`
-  color: ${({ theme }) => theme.colors.otherText};
+  color: var(--color-otherText);
   font-size: 1.4rem;
   line-height: 1.4;
   margin-top: 1.5rem;

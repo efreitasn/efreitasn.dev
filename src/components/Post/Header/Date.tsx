@@ -9,7 +9,7 @@ interface Props {
 }
 
 const PostHeaderDateStyled = styled.time`
-  color: ${({ theme }) => theme.colors.otherText};
+  color: var(--color-otherText);
   padding: 0 4rem;
 
   ${bk2`

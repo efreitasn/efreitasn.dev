@@ -15,12 +15,12 @@ const PostContent = styled.div`
   }
 
   & > blockquote {
-    background-color: ${({ theme }) => theme.colors.bodyBg};
+    background-color: var(--color-bodyBg);
     border-radius: 10px;
-    color: ${({ theme }) => theme.colors.otherText};
+    color: var(--color-otherText);
     margin: 2rem 4rem;
     padding: 1.5rem 2.5rem;
-    transition: ${({ theme }) => theme.transitions.bg};
+    ${({ theme }) => theme.transitions.bg ? `transition: ${theme.transitions.bg};` : ''};
 
     ${bk2`
       margin: 0 2rem;

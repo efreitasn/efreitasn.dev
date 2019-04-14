@@ -1,4 +1,15 @@
 import { createGlobalStyle } from 'styled-components';
+import {
+  COLOR_GREY_1,
+  COLOR_WHITE,
+  COLOR_BLACK,
+  COLOR_DARK_1,
+  COLOR_DARK_2,
+  COLOR_GREY_3,
+  COLOR_GREY_2,
+  COLOR_PRIMARY,
+  COLOR_PRIMARY_LIGHT
+} from 'Styles/colors';
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -25,15 +36,31 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background-color: ${({ theme }) => theme.colors.bodyBg};
-    color: ${({ theme }) => theme.colors.bodyText};
+    background-color: var(--color-bodyBg);
+    color: var(--color-bodyText);
     font-family: 'Roboto', sans-serif;
     font-size: 1.6rem;
-    transition: ${({ theme }) => theme.transitions.bg}
+    ${({ theme }) => theme.transitions.bg ? `transition: ${theme.transitions.bg};` : ''};
+  }
+
+  body.dark {
+    --color-bodyBg: ${COLOR_DARK_1};
+    --color-bodyText: ${COLOR_WHITE};
+    --color-link: ${COLOR_PRIMARY_LIGHT};
+    --color-mainBg: ${COLOR_DARK_2};
+    --color-otherText: ${COLOR_GREY_2};
+  }
+
+  body.light {
+    --color-bodyBg: ${COLOR_GREY_1};
+    --color-bodyText: ${COLOR_BLACK};
+    --color-link: ${COLOR_PRIMARY};
+    --color-mainBg: ${COLOR_WHITE};
+    --color-otherText: ${COLOR_GREY_3};
   }
 
   a {
-    color: ${({ theme }) => theme.colors.link};
+    color: var(--color-link);
     text-decoration: none;
 
     &:hover {

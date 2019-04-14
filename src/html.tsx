@@ -30,6 +30,28 @@ export default function HTML({
         {headComponents}
       </head>
       <body {...bodyAttributes}>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              const valueByStorage = localStorage.getItem('dark-mode');
+              let isDark = valueByStorage === 'true';
+
+              if (valueByStorage === null) {
+                const mq = window.matchMedia('(prefers-color-scheme: dark)');
+  
+                if (mq.matches) {
+                  isDark = true;
+                }
+              }
+
+              if (isDark) {
+                document.body.classList.add('dark');
+              } else {
+                document.body.classList.add('light');
+              }
+            `
+          }}
+        />
         {preBodyComponents}
         <div
           key="body"

@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import DarkModeToggleMoon from './Moon';
 
 interface Props {
-  dark: boolean;
-  toggleDark: () => void;
+  toggleIsDark: () => void;
+  isDark: boolean;
 }
 
 const DarkModeToggleStyled = styled.button`
@@ -23,15 +23,15 @@ const DarkModeToggleStyled = styled.button`
 `;
 
 export default function DarkModeToggle({
-  dark,
-  toggleDark
+  toggleIsDark,
+  isDark
 }: Props) {
   return (
     <DarkModeToggleStyled
-      onClick={toggleDark}
-      title={`Dark mode is ${dark ? 'on' : 'off'}`}
+      onClick={toggleIsDark}
+      title={`Dark mode is ${isDark ? 'on' : 'off'}`}
     >
-      <DarkModeToggleMoon dark={dark} />
+      <DarkModeToggleMoon isDark={isDark} />
     </DarkModeToggleStyled>
   );
 }
