@@ -41,7 +41,7 @@ const GlobalStyles = createGlobalStyle`
     color: var(--color-bodyText);
     font-family: 'Roboto', sans-serif;
     font-size: 1.6rem;
-    ${({ theme }) => theme.transitions.bg ? `transition: ${theme.transitions.bg};` : ''};
+    ${({ theme }) => theme.transitions.bgBorder ? `transition: ${theme.transitions.bgBorder};` : ''};
 
     ${bk2`
       font-size: 1.8rem;

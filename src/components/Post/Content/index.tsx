@@ -5,34 +5,68 @@ const PostContent = styled.div`
   line-height: 3.2rem;
   text-align: justify;
 
-  & > p {
-    margin: 1rem 0;
-    padding: 0 4rem;
+  ${bk2`
+    line-height: 3.8rem;
+  `}
+
+  & > * {
+    margin: 3rem 0 0;
 
     ${bk2`
+      margin: 4rem 0 0;
+    `}
+  }
+
+  & > p {
+    padding: 0 4rem;
+    /*
+      margin-top & margin-bottom because of line-height.
+    */
+    margin-top: 2.1rem;
+    margin-bottom: -.9rem;
+
+    ${bk2`
+      margin-top: 3rem;
+      margin-bottom: -1.5rem;
       padding: 0 2rem;
     `}
   }
 
   & > blockquote {
-    background-color: var(--color-bodyBg);
-    border-radius: 10px;
     color: var(--color-otherText);
-    margin: 2rem 4rem;
-    padding: 1.5rem 2.5rem;
-    ${({ theme }) => theme.transitions.bg ? `transition: ${theme.transitions.bg};` : ''};
+    padding: 0 4rem;
 
     ${bk2`
-      margin: 0 2rem;
+      padding: 0 2rem;
     `}
 
     & > p {
-      padding: 0;
+      border-left: 4px solid var(--color-bodyBg);
+      padding: 1rem 2rem;
+
+      ${({ theme }) => theme.transitions.bgBorder ? `transition: ${theme.transitions.bgBorder};` : ''};
     }
   }
 
-  & .gatsby-highlight {
-    margin: 2rem 0;
+  & .gatsby-resp-image-link, & .gatsby-resp-image-figure {
+    margin: 5rem 0;
+  }
+
+  & .gatsby-resp-image-figure {
+    padding: 0 4rem;
+  }
+
+  & .gatsby-resp-image-figcaption {
+    color: var(--color-otherText);
+    font-size: 1.4rem;
+    line-height: 1.4;
+    margin-top: 1.5rem;
+    padding: 0 2rem;
+    text-align: center;
+  }
+
+  & .gatsby-resp-image-figure > .gatsby-resp-image-link {
+    margin: 0;
   }
 `;
 

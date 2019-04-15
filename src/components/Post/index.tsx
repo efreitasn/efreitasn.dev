@@ -14,7 +14,7 @@ interface Props {
 }
 
 const PostStyled = styled.div`
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
 `;
 
 export default function Post({

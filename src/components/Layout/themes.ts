@@ -6,6 +6,6 @@ export const firstRenderTheme: DefaultTheme = {
 
 export const subsequentRendersTheme: DefaultTheme = {
   transitions: {
-    bg: 'background-color .5s ease'
+    bgBorder: 'background-color .5s ease, border .5s ease'
   }
 };

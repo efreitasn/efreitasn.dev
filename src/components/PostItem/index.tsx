@@ -21,6 +21,7 @@ const PostItemStyled = styled.article`
 
   &:not(:last-child) {
     border-bottom: 2px solid var(--color-bodyBg);
+    ${({ theme }) => theme.transitions.bgBorder ? `transition: ${theme.transitions.bgBorder};` : ''};
   }
 `;
 

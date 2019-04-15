@@ -13,7 +13,7 @@ const LayoutMainStyled = styled.main`
   box-shadow: ${shadow1};
   /* overflow because of the border-radius */
   overflow: hidden;
-  ${({ theme }) => theme.transitions.bg ? `transition: ${theme.transitions.bg};` : ''};
+  ${({ theme }) => theme.transitions.bgBorder ? `transition: ${theme.transitions.bgBorder};` : ''};
 
   ${bk2`
     border-radius: 0;
