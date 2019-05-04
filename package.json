@@ -2,7 +2,11 @@
   "name": "efreitasn.github.io",
   "description": "efreitasn's personal blog.",
   "version": "0.1.0",
-  "author": "Emanuel Freitas <me@efreitasn.dev>",
+  "author": {
+    "name": "Emanuel Freitas",
+    "email": "me@efreitasn.dev",
+    "url": "https://efreitas.dev"
+  },
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",
     "gatsby": "^2.3.4",
