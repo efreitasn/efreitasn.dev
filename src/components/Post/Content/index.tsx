@@ -6,7 +6,7 @@ const PostContent = styled.div`
   text-align: justify;
 
   ${bk2`
-    line-height: 3.8rem;
+    line-height: 3.2rem;
   `}
 
   & > * {

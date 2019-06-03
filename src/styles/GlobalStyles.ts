@@ -44,7 +44,7 @@ const GlobalStyles = createGlobalStyle`
     ${({ theme }) => theme.transitions.bgBorder ? `transition: ${theme.transitions.bgBorder};` : ''};
 
     ${bk2`
-      font-size: 1.8rem;
+      font-size: 1.6rem;
     `}
   }
 
