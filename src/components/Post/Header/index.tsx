@@ -10,7 +10,8 @@ interface Props {
   cover?: FluidObject;
   coverAlt?: string;
   coverCaption?: string;
-  createdAt?: string;
+  createdAt: string;
+  updatedAt?: string;
 }
 
 export default function PostHeader({
@@ -18,7 +19,8 @@ export default function PostHeader({
   cover,
   coverAlt,
   coverCaption,
-  createdAt
+  createdAt,
+  updatedAt
 }: Props) {
   return (
     <header>
@@ -31,9 +33,10 @@ export default function PostHeader({
       )}
       <PostHeaderBottom>
         <PostHeaderTitle title={title} />
-        {createdAt && (
-          <PostHeaderDate date={createdAt} />
-        )}
+        <PostHeaderDate
+          createdAt={createdAt}
+          updatedAt={updatedAt}
+        />
       </PostHeaderBottom>
     </header>
   );

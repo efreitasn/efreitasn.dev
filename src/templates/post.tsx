@@ -11,6 +11,7 @@ interface Props {
       html: string;
       frontmatter: {
         date: string;
+        lastUpdateDate?: string;
         title: string;
         description: string;
         cover_alt: Nullable<string>;
@@ -39,6 +40,7 @@ export const query = graphql`
       html
       frontmatter {
         date
+        lastUpdateDate
         title
         description
         cover_alt
@@ -80,6 +82,7 @@ export default function PostTemplate({
         <Post
           title={frontmatter.title}
           createdAt={frontmatter.date}
+          updatedAt={frontmatter.lastUpdateDate}
           cover={data.file ? data.file.childImageSharp.fluid : undefined}
           coverAlt={frontmatter.cover_alt ? frontmatter.cover_alt : undefined}
           coverCaption={frontmatter.cover_caption ? frontmatter.cover_caption : undefined}

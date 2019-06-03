@@ -10,7 +10,8 @@ interface Props {
   cover?: FluidObject;
   coverAlt?: string;
   coverCaption?: string;
-  createdAt?: string;
+  createdAt: string;
+  updatedAt?: string;
 }
 
 const PostStyled = styled.div`
@@ -23,7 +24,8 @@ export default function Post({
   cover,
   coverAlt,
   coverCaption,
-  createdAt
+  createdAt,
+  updatedAt
 }: Props) {
   return (
     <PostStyled>
@@ -32,6 +34,7 @@ export default function Post({
         coverAlt={coverAlt}
         coverCaption={coverCaption}
         createdAt={createdAt}
+        updatedAt={updatedAt}
         cover={cover}
       />
       <PostContent
