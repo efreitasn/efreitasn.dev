@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { bk2 } from 'Styles/breakpoints';
 
 interface Props {
   keywords: string[];
@@ -9,6 +10,10 @@ const PostHeaderKeywordsStyled = styled.div`
   display: flex;
   margin-left: 4rem;
   margin-top: 2.5rem;
+
+  ${bk2`
+    margin-left: 2rem;
+  `}
 `;
 
 const PostHeaderKeywordsItem = styled.div`
