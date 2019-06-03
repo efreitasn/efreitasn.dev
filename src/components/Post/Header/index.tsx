@@ -4,6 +4,7 @@ import PostHeaderBottom from './Bottom';
 import PostHeaderTitle from './Title';
 import PostHeaderDate from './Date';
 import PostHeaderFigure from './Figure';
+import PostHeaderKeywords from './Keywords';
 
 interface Props {
   title: string;
@@ -12,6 +13,7 @@ interface Props {
   coverCaption?: string;
   createdAt: string;
   updatedAt?: string;
+  keywords: string[];
 }
 
 export default function PostHeader({
@@ -20,7 +22,8 @@ export default function PostHeader({
   coverAlt,
   coverCaption,
   createdAt,
-  updatedAt
+  updatedAt,
+  keywords
 }: Props) {
   return (
     <header>
@@ -36,6 +39,9 @@ export default function PostHeader({
         <PostHeaderDate
           createdAt={createdAt}
           updatedAt={updatedAt}
+        />
+        <PostHeaderKeywords
+          keywords={keywords}
         />
       </PostHeaderBottom>
     </header>

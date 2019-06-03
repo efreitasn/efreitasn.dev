@@ -67,13 +67,14 @@ export default function PostTemplate({
     html,
     frontmatter
   } = data.markdownRemark;
+  const keywords = frontmatter.keywords.split(', ');
 
   return (
     <>
       <SEO
         title={frontmatter.title}
         description={frontmatter.description}
-        keywords={frontmatter.keywords.split(', ')}
+        keywords={keywords}
         image={data.file ? data.file.childImageSharp.fluid.src : undefined}
         imageAlt={frontmatter.cover_alt ? frontmatter.cover_alt : undefined}
         article
@@ -82,6 +83,7 @@ export default function PostTemplate({
         <Post
           title={frontmatter.title}
           createdAt={frontmatter.date}
+          keywords={keywords}
           updatedAt={frontmatter.lastUpdateDate}
           cover={data.file ? data.file.childImageSharp.fluid : undefined}
           coverAlt={frontmatter.cover_alt ? frontmatter.cover_alt : undefined}

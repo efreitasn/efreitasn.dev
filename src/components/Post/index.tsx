@@ -10,6 +10,7 @@ interface Props {
   cover?: FluidObject;
   coverAlt?: string;
   coverCaption?: string;
+  keywords: string[];
   createdAt: string;
   updatedAt?: string;
 }
@@ -25,7 +26,8 @@ export default function Post({
   coverAlt,
   coverCaption,
   createdAt,
-  updatedAt
+  updatedAt,
+  keywords
 }: Props) {
   return (
     <PostStyled>
@@ -36,6 +38,7 @@ export default function Post({
         createdAt={createdAt}
         updatedAt={updatedAt}
         cover={cover}
+        keywords={keywords}
       />
       <PostContent
         dangerouslySetInnerHTML={{
