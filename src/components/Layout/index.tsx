@@ -31,7 +31,10 @@ interface Props {
 type LayoutQuery = {
   site: {
     siteMetadata: {
-      feedUrl: string
+      feedUrl: string;
+      links: {
+        gitRepo: string;
+      }
     }
   }
 };
@@ -41,6 +44,9 @@ const layoutQuery = graphql`
     site {
       siteMetadata {
         feedUrl
+        links {
+          gitRepo
+        }
       }
     }
   }
@@ -90,6 +96,11 @@ export default function Layout({
                   newTab: false,
                   text: 'About',
                   to: '/posts/about'
+                },
+                {
+                  newTab: true,
+                  text: 'Github',
+                  to: site.siteMetadata.links.gitRepo
                 },
                 {
                   newTab: true,

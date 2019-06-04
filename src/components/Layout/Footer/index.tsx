@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import Link from 'Components/Link';
-import LayoutFooterSplitter from './Splitter';
+import LayoutFooterSeparator from './Separator';
 
 interface Props {
   links: Array<{
@@ -39,7 +39,7 @@ export default function LayoutFooter({
         index
       ) => (
         <Fragment key={text}>
-          {index !== 0 && <LayoutFooterSplitter />}
+          {index !== 0 && <LayoutFooterSeparator />}
           <Link
             to={to}
             rel="noopener noreferrer"
