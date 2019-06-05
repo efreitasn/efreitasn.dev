@@ -3,7 +3,7 @@
   "description": "efreitasn's personal blog.",
   "version": "0.1.0",
   "engines": {
-    "node": "^10.5.3"
+    "node": "^10.16.0"
   },
   "author": {
     "name": "Emanuel Freitas",
