@@ -17,7 +17,7 @@ module.exports = {
     links: {
       twitter: 'https://twitter.com/efreitasn',
       github: 'https://github.com/efreitasn',
-      mail: 'mailto:me@efreitasn.dev',
+      mail: 'mailto:hi@efreitasn.dev',
       gitRepo: 'https://github.com/efreitasn/efreitasn.dev'
     }
   },
