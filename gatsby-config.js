@@ -5,7 +5,7 @@ const FEED_FILE = 'rss.xml';
 module.exports = {
   siteMetadata: {
     title: 'efreitasn',
-    description: 'A front-end dev.',
+    description: 'A web dev.',
     siteUrl: 'https://efreitasn.dev',
     feedUrl: `https://efreitasn.dev/${FEED_FILE}`,
     author: {

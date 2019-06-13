@@ -74,7 +74,7 @@ const IndexPage = ({
       <SEO
         title="Home"
         description={data.site.siteMetadata.description}
-        keywords={['developer', 'front-end']}
+        keywords={['developer', 'front-end', 'web']}
       />
       <>
         {data.allMarkdownRemark.edges.map(({
