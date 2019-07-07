@@ -3,9 +3,11 @@ import { bk2 } from 'Styles/breakpoints';
 
 const PostContent = styled.div`
   line-height: 3.2rem;
+  padding: 0 4rem;
   text-align: justify;
 
   ${bk2`
+    padding: 0 2rem;
     line-height: 3.2rem;
   `}
 
@@ -18,7 +20,6 @@ const PostContent = styled.div`
   }
 
   & > p {
-    padding: 0 4rem;
     /*
       margin-top & margin-bottom because of line-height.
     */
@@ -34,11 +35,6 @@ const PostContent = styled.div`
 
   & > blockquote {
     color: var(--color-otherText);
-    padding: 0 4rem;
-
-    ${bk2`
-      padding: 0 2rem;
-    `}
 
     & > p {
       border-left: 4px solid var(--color-bodyBg);
@@ -50,10 +46,6 @@ const PostContent = styled.div`
 
   & .gatsby-resp-image-link, & .gatsby-resp-image-figure {
     margin: 5rem 0;
-  }
-
-  & .gatsby-resp-image-figure {
-    padding: 0 4rem;
   }
 
   & .gatsby-resp-image-figcaption {
