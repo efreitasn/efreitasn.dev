@@ -29,7 +29,6 @@ const PostContent = styled.div`
     ${bk2`
       margin-top: 3rem;
       margin-bottom: -1.5rem;
-      padding: 0 2rem;
     `}
   }
 
