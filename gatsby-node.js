@@ -50,7 +50,7 @@ exports.createPages = async ({ actions, graphql }) => {
       component: blogPostTemplate,
       context: {
         slug: node.fields.slug,
-        coverImgGlob: path.resolve(node.fileAbsolutePath, '..', 'cover*')
+        coverImgGlob: path.resolve(node.fileAbsolutePath, '..', 'cover.png')
       }
     });
   }
