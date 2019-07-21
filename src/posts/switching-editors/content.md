@@ -3,7 +3,9 @@ date: "2019-07-07T21:43:00Z"
 title: "Switching editors"
 description: "So I decided to change my current code editor."
 showInFeed: true
+cover_alt: "Opening a file with vim"
 keywords: "vim, editors"
+lastUpdateDate: "2019-07-21T22:09:00Z"
 ---
 So I switched my code editor. I've been using VSCode for a year now and have nothing to complain about it. Basically, it's a very good editor. Even though I was happy with VSCode, I wanted to try this idea of an editor in the terminal. As it turns out, I ended up really liking this idea.
 
