@@ -33,16 +33,25 @@ export default function PostHeaderDate({
   createdAt,
   updatedAt
 }: Props) {
+  const createdAtMomentDate = moment(createdAt);
+  const updatedAtMomentDate = moment(updatedAt);
+
   return (
     <PostHeaderDateWrapper>
-      <time dateTime={createdAt}>
-        {moment(createdAt).format('MMMM DD, YYYY')}
+      <time
+        dateTime={createdAt}
+        title={createdAtMomentDate.format('MM/DD/YYYY hh:mma')}
+      >
+        {createdAtMomentDate.format('MMMM DD, YYYY')}
       </time>
       {updatedAt && (
         <UpdatedAtWrapper>
           <span>updated in </span>
-          <time dateTime={updatedAt}>
-            {moment(updatedAt).format('MMMM DD, YYYY')}
+          <time
+            dateTime={updatedAt}
+            title={updatedAtMomentDate.format('MM/DD/YYYY hh:mma')}
+          >
+            {updatedAtMomentDate.format('MMMM DD, YYYY')}
           </time>
         </UpdatedAtWrapper>
       )}
