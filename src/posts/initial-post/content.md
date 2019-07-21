@@ -6,6 +6,7 @@ cover_alt: "Post init."
 cover_caption: "So it begins."
 showInFeed: true
 keywords: "sharing, knowledge"
+lastUpdateDate: "2019-07-21T21:25:00Z"
 ---
 > **I know this post may sound a little cliche, but, regardless of whether it is or not, it represents what I believe.**
 
