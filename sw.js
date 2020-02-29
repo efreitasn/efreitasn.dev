@@ -1,10 +1,6 @@
 // This exists because of the previous version, which had a service worker.
-self.addEventListener('activate', function(e) {
-  self.registration.unregister()
-    .then(function() {
-      return self.clients.matchAll();
-    })
-    .then(function(clients) {
-      clients.forEach(client => client.navigate(client.url))
-    });
-});
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.getRegistrations().then(registrations => {
+    registrations.forEach(registration => registration.unregister());
+  });
+}
