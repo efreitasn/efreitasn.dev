@@ -1,10 +1,12 @@
 @font-face {
+  font-display: swap;
   font-family: 'Roboto Slab';
   font-weight: 400;
   src: url("/assets/fonts/RobotoSlab-Regular-4fe81b7ae85477ed86e56c86381ef61f.woff") format("woff");
 }
 
 @font-face {
+  font-display: swap;
   font-family: 'Roboto Slab';
   font-weight: 700;
   src: url("/assets/fonts/RobotoSlab-Bold-b54b24707e5d7fd431842e913be1b9a6.woff") format("woff");
