@@ -1,0 +1,15 @@
+.footer {
+  font-size: 1.4rem;
+  margin: var(--size-main) 0;
+  padding: 0 var(--size-main);
+}
+
+.footer-nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footer-nav li:not(:last-child) {
+  margin-right: var(--size-main);
+}

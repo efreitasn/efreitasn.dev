@@ -1,0 +1,25 @@
+title: efreitasn
+description:
+  en: efreitasn's personal blog
+  pt-BR: Blog pessoal do efreitasn
+url: https://efreitasn.dev
+color: "#0e0e0e"
+img: /the-img.png
+imgAlt:
+  en: efreitasn.dev's logo
+  pt-BR: Logo do efreitasn.dev
+author:
+  name: Emanuel Freitas
+  twitter: efreitasn
+langs:
+  - tag: en
+    name: English
+    default: true
+  - tag: pt-BR
+    name: Português do Brasil
+responsiveImgSizes:
+  - 425
+  - 640
+  - 960
+  - 1280
+responsiveImgMediaQueries: "(max-width: 26.5625em) calc(100vw - 2rem), (max-width: 64em) calc(65vw - 2rem), calc(50vw - 2rem)"

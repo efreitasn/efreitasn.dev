@@ -1,0 +1,19 @@
+<div class="wrapper">
+  {{ template "header" . }}
+  
+  <main class="main">
+    <section class="home">
+      {{ range sortPostsByDateDesc .Posts -}}
+      <article class="home-post-item">
+        <h2>
+          <a href="{{ .URL }}" class="home-post-item__title">{{ .Title }}</a>
+        </h2>
+        <time datetime="{{ dateISO .Date }}">{{ dateISO .Date }}</time>
+        <p class="home-post-item__excerpt">{{ .Excerpt }}</p>
+      </article>
+      {{- end }}
+    </section>
+  </main>
+  
+  {{ template "footer" . }}
+</div>

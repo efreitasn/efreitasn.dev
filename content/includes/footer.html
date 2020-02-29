@@ -1,0 +1,23 @@
+<footer class="footer">
+  <nav class="footer-nav">
+    <ul>
+      <li>
+        <a href="https://github.com/efreitasn/efreitasn.dev">GitHub</a>
+      </li>
+      {{ with $about := getInvisiblePost .Lang "about" }}
+        <li>
+          <a href="{{ $about.URL }}">{{ $about.Title }}</a>
+        </li>
+      {{ end }}
+      {{ with $data := . }}
+        {{ range .AlternateLinks }}
+          {{ if ne .Lang.Tag $data.Lang.Tag }}
+            <li>
+              <a href="{{ .URL }}">{{ .Lang.Name }}</a>
+            </li>
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    </ul>
+  </nav>
+</footer>

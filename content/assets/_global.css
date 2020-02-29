@@ -1,0 +1,77 @@
+@font-face {
+  font-family: 'Roboto Slab';
+  font-weight: 400;
+  src: url("/assets/fonts/RobotoSlab-Regular-4fe81b7ae85477ed86e56c86381ef61f.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Roboto Slab';
+  font-weight: 700;
+  src: url("/assets/fonts/RobotoSlab-Bold-b54b24707e5d7fd431842e913be1b9a6.woff") format("woff");
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* 1rem -> 10px */
+  font-size: 62.5%;
+
+  /* sizes */
+  /*
+    size-main is used as the padding, margin etc in most parts of the app.
+  */
+  --size-main: 2rem;
+  /*
+    size-inside is used as a space between children of an element that has
+    a --size-main space around it.
+  */
+  --size-inside: 1rem;
+
+  /* colors */
+  --color-dark-1: #0e0e0e;
+  --color-dark-2: #111111;
+  --color-dark-3: #171717;
+  --color-text-1: #FFFFFF;
+  --color-text-2: #8e8e8e;
+}
+
+body {
+  background-color: var(--color-dark-1);
+  color: var(--color-text-1);
+  font-family: 'Roboto Slab', serif;
+  font-size: 1.6rem;
+}
+
+a {
+  color: var(--color-text-2);
+  text-decoration: underline;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 50%;
+}
+
+.main {
+  background-color: var(--color-dark-2);
+  border-radius: 2px;
+  margin-top: var(--size-main);
+}
+
+/* 1024px */
+@media (max-width: 64em) {
+  .wrapper {
+    width: 65%;
+  }
+}
+
+/* 425px */
+@media (max-width: 26.5625em) {
+  .wrapper {
+    width: 100%;
+  }
+}

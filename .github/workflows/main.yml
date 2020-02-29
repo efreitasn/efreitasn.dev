@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Downnload go@v1.14
+      uses: actions/setup-go@v1
+      with:
+        go-version: 1.14
+        
+    - name: Checkout repo
+      uses: actions/checkout@v1
+      
+    - name: Download deps
+      run: go mod download
+
+    - name: Build
+      run: go run main.go
+      env:
+        ANALYTICS_ID: ${{ secrets.ANALYTICS_ID }}
+
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist

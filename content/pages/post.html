@@ -1,0 +1,32 @@
+<div class="wrapper">
+  {{ template "header" . }}
+  
+  <main class="main">
+    <article>
+      <header class="post-header">
+        <h1 class="post-header__title">{{ .Post.Title }}</h1>
+        <p class="post-header__dates">
+          <span>{{ createdByLang .Lang }}:</span>
+          <time>{{ dateISO .Post.Date }}</time><br>
+          {{ if not .Post.LastUpdateDate.IsZero }}
+            <span>{{ lastUpdatedByLang .Lang }}:</span>
+            <time>{{ dateISO .Post.LastUpdateDate }}</time>
+          {{ end }}
+        </p>
+      </header>
+      {{ if .Post.Img }}
+        <a href="{{ assetLink .Post.Img.Path }}">
+          <img class="post-img" srcset="{{ srcSetValue .Post.Img.Path }}" sizes="(max-width: 26.5625em) 100vw, (max-width: 64em) 65vw, 50vw" src="{{ assetLink .Post.Img.Path }}" alt="{{ .Post.Img.Alt }}">
+        </a>
+      {{ end }}
+      <div class="post-content">
+        {{ .Post.Content }}
+      </div>
+      <footer class="post-footer">
+        <a href="{{ getPostGithubURL .Post.Slug .Lang }}">{{ editOnGitHubByLang .Lang }}</a>
+      </footer>
+    </article>
+  </main>
+
+  {{ template "footer" . }}
+</div>

@@ -1,0 +1,12 @@
+.header__title {
+  font-size: 8.2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* 425px */
+@media (max-width: 26.5625em) {
+  .header__title {
+    font-size: 6.8rem;
+  }
+}
