@@ -55,7 +55,7 @@ func main() {
 
 				return ""
 			},
-			"getPostGithubURL": func(postSlug string, l *egen.Lang) string {
+			"getPostGitHubURL": func(postSlug string, l *egen.Lang) string {
 				return fmt.Sprintf(
 					"https://github.com/efreitasn/efreitasn.dev/blob/master/content/posts/%v/content_%v.md",
 					postSlug,
