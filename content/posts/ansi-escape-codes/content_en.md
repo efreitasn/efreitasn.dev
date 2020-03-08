@@ -1,8 +1,8 @@
 ---
 title: ANSI escape codes
-excerpt: Printing custom strings on your terminal.
+excerpt: Printing custom strings in your terminal.
 ---
-Have you ever wondered how is it that some CLIs print a custom text on your terminal? By custom I mean: italic, bold, with foreground and/or background colors different than the default ones etc. The secret, so to speak, is something called ANSI escape codes.
+Have you ever wondered how is it that some CLIs print a custom text in your terminal? By custom I mean: italic, bold, with foreground and/or background colors different than the default ones etc. The secret, so to speak, is something called ANSI escape codes.
 
 ## What they are
 Basically, ANSI escape codes are sequences of characters that start with `ESC` and are interpreted as commands instead of solely characters. They were created because, back when actual terminals were used, there was a need to standardize how manufacturers could print special characters to the user using these devices. It was a need because the manufacturers were creating their own versions of escape codes to use in their own devices. This, [just as what happened with character encodings before Unicode](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/), created compatibility issues. Therefore, to address these issues, the ANSI escape codes were created.
