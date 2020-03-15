@@ -22,4 +22,4 @@ responsiveImgSizes:
   - 640
   - 960
   - 1280
-responsiveImgMediaQueries: "(max-width: 26.5625em) calc(100vw - 2rem), (max-width: 64em) calc(65vw - 2rem), calc(50vw - 2rem)"
+responsiveImgMediaQueries: "(max-width: 26.5625em) calc(100vw - 2.5em), (max-width: 64em) calc(65vw - 2.5em), calc(50vw - 2.5em)"
