@@ -1,0 +1,10 @@
+delayToKill: 1000
+fatalIfErr: false
+cmds:
+- terms:
+  - go
+  - run
+  - main.go
+ignoreRegExps:
+- "dist/*"
+- ".*\\.tmp"
