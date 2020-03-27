@@ -14,6 +14,7 @@
 
 .post-content {
   padding: var(--size-main);
+  word-break: break-word;
 }
 
 .post-content > *:not(:first-child) {
