@@ -2,14 +2,21 @@
   font-display: swap;
   font-family: 'Roboto Slab';
   font-weight: 400;
-  src: url("/assets/fonts/RobotoSlab-Regular-4fe81b7ae85477ed86e56c86381ef61f.woff") format("woff");
+  src: local('Roboto Slab'),
+    local('Roboto Slab Regular'),
+    url('/assets/fonts/Roboto-Slab-Regular-de72ac99ef86dbc828cc008f513bf889.woff2') format('woff2'),
+    url('/assets/fonts/Roboto-Slab-Regular-b5dbd41f0d4d80dc1db77ee867a86ab5.woff') format('woff'),
+    url('/assets/fonts/Roboto-Slab-Regular-e131b461ddf0a90c3d462814408b45cc.ttf') format('ttf');
 }
 
 @font-face {
   font-display: swap;
   font-family: 'Roboto Slab';
   font-weight: 700;
-  src: url("/assets/fonts/RobotoSlab-Bold-b54b24707e5d7fd431842e913be1b9a6.woff") format("woff");
+  src: local('Roboto Slab Bold'),
+    url('/assets/fonts/Roboto-Slab-Bold-0457fa9d8e62f71a6c6667f0a23b54a9.woff2') format('woff2'),
+    url('/assets/fonts/Roboto-Slab-Bold-3eb365df1231bdc0196731821bb136d5.woff') format('woff'),
+    url('/assets/fonts/Roboto-Slab-Bold-d2aa20c5d8d3569a6ca4f6db56cfaff7.ttf') format('ttf');
 }
 
 * {
