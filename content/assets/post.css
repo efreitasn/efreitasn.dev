@@ -43,6 +43,7 @@
 
 .post-content blockquote {
   border-left: 6px solid var(--color-dark-1);
+  line-height: 1.5;
   padding: var(--size-main);
 }
 
@@ -70,6 +71,13 @@
 .post-content hr {
   border-color: var(--color-dark-1);
   border-style: solid;
+}
+
+/* Code */
+.post-content code {
+  background-color: var(--color-dark-1);
+  border-radius: 2px;
+  padding: 5px;
 }
 
 .post-content .chroma {
