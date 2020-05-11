@@ -48,9 +48,9 @@ func main() {
 			"editOnGitHubByLang": func(l *egen.Lang) string {
 				switch l.Tag {
 				case "en":
-					return "Edit on GitHub"
+					return "View on GitHub"
 				case "pt-BR":
-					return "Editar no GitHub"
+					return "Ver no GitHub"
 				}
 
 				return ""
