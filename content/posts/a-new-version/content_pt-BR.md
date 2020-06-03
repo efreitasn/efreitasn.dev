@@ -78,7 +78,7 @@ func main() {
 O diretório `content` é o `inPath`, o diretório passado como input para o egen. O arquivo `main.go` é onde o processo de build começa. Sim, egen não é uma CLI. É simplesmente um package que você importa no seu projeto Go. Eu fiz desse jeito para que o usuário pudesse personalizar algumas coisas em Go, principalmente as funções passadas aos templates. O fato que egen não é uma CLI permite ao usuário fornecer funções personalizadas para serem usadas nos templates.
 
 ### Templates
-Falando neles, templates usam, como você já deve ter imaginado, a sintaxe de templates de Go. Há dois templates que são obrigatórios e estão localizados em `<inPath>/pages/home.html`, `<inPath>/pages/post.html` e `<inPath>/pages/404.html`. O primeiro é o template usado para gerar o arquivo `index.html` e é executado uma vez por linguagem especificada no arquivo de configuração (`egen.yaml`). O outro é usado para gerar uma página HTML para cada post em cada uma das linguagens especificadas. Eu falarei mais sobre as linguagens presentes no arquivo de configuração na seção sobre internacionalização.
+Falando neles, templates usam, como você já deve ter imaginado, a sintaxe de templates de Go. Há dois templates que são obrigatórios e estão localizados em `<inPath>/pages/home.html`, `<inPath>/pages/post.html` e `<inPath>/pages/404.html`. O primeiro é o template usado para gerar o arquivo `index.html` e é executado uma vez por linguagem especificada no arquivo de configuração (`egen.yaml`). O segundo é usado para gerar uma página HTML para cada post em cada uma das linguagens especificadas. O último é para a página not found. Eu falarei mais sobre as linguagens presentes no arquivo de configuração na seção sobre internacionalização.
 
 Templates com nomes arbitrários também podem ser criados. Eles ficam localizados no diretório `<inPath>/includes` e são usados da mesma maneira que qualquer outro template em Go. Talvez você pense que o arquivo precisa começar com `{{ define "<template_name>" }}` e terminar com `{{ end }}`, mas essas duas linhas são adicionadas automaticamente. A parte do `<template_name>` é obtida a partir do nome do arquivo.
 
@@ -118,7 +118,7 @@ No egen, uma lista de widths e uma string para ser usada como o valor do atribut
 * Todos os widths processados são usados para gerar o valor do atributo `srcset`.
 * Finalmente, os atributos `srcset` e `sizes` têm seus valores definidos na nova tag `<img>`.
 
-E se houver a necessidade de usar imagens responsivas fora de um post? Para cobrir esse caso, uma função chamada `srcSetValue(AssetRelPath)` e a proprieade `ResponsiveImgMediaQueries` são expostas aos templates. Eu uso algo similar a essa abordagem para tornar a imagem principal de um post responsiva nesse blog, já que essa imagem não é parte do conteúdo em markdown.
+E se houver a necessidade de usar imagens responsivas fora de um post? Para cobrir esse caso, uma função chamada `srcSetValue(AssetRelPath)` e a propriedade `ResponsiveImgMediaQueries` são expostas aos templates. Eu uso algo similar a essa abordagem para tornar a imagem principal de um post responsiva nesse blog, já que essa imagem não é parte do conteúdo em markdown.
 
 ```html
 {{ if .Post.Img }}

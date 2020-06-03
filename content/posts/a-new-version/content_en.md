@@ -78,12 +78,12 @@ func main() {
 The `content` directory is the directory passed as input to egen, the `inPath`. The `main.go` file is where the build process starts. Yes, egen is not a CLI. It's simply a package that you import into your Go project. I made it that way so that the user could personalize some Go-related things, namely template functions. Making it that way allows the user to provide custom functions to be used in a template.
 
 ### Templates
-Speaking of which, templates use, as you may have guessed, Go's template syntax. There are three templates that are mandatory and are located at `<inPath>/pages/home.html`, `<inPath>/pages/post.html` and `<inPath>/pages/404.html`. The former is the template used to generate the `index.html` file and is executed once per language specified in the config file (`egen.yaml`). The latter is the one used to generate an HTML page for each post in each of the specified languages. I'll talk more about the languages in the config file in the internationalization section.
+Speaking of which, templates use, as you may have guessed, Go's template syntax. There are three templates that are mandatory and are located at `<inPath>/pages/home.html`, `<inPath>/pages/post.html` and `<inPath>/pages/404.html`. The first is the template used to generate the `index.html` file and is executed once per language specified in the config file (`egen.yaml`). The second is the one used to generate an HTML page for each post in each of the specified languages. The last is for the not found page. I'll talk more about the languages in the config file in the internationalization section.
 
 Templates with arbitrary names can also be created. They're located at the `<inPath>/includes` directory and are used the same way as any other template in Go. You may think that, because of how Go templates are defined, the file needs to start with `{{ define "<template_name>" }}` and end with `{{ end }}`, but these two lines are actually added automatically by egen. The `<template_name>` part is taken from the file's name.
 
 ### Posts
-Posts are located at `<inPath>/posts`. Each post is a directory whose name is the post's slug. Inside the post's directory, there's a file named `data.yaml`, which contains info about the post, including whether it's an invisble post. There's also one file per language named `content_<lang_tag>.md` with a YAML frontmatter.
+Posts are located at `<inPath>/posts`. Each post is a directory whose name is the post's slug. Inside the post's directory, there's a file named `data.yaml`, which contains info about the post, including whether it's an invisible post. There's also one file per language named `content_<lang_tag>.md` with a YAML frontmatter.
 
 #### Invisible posts
 An invisible post is a just like a normal post, it becomes an HTML file, its assets are processed etc. However, it's not present in the posts list passed to the templates. This kind of post serves the purpose of a page in a blog.
