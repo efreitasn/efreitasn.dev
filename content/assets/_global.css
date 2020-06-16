@@ -62,6 +62,7 @@ a {
 
 .wrapper {
   margin: 0 auto;
+  max-width: 67.2rem;
   width: 50%;
 }
 
