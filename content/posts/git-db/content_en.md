@@ -126,7 +126,7 @@ It was briefly talked about before, but let's now understand where the `100644` 
 * 3 bits unused.
 * 9 bits for the Unix permission (only `0000`, `0755` and `0644` are accepted).
 
-The `100644` number is in octal and it's `1000000110100100` in binary. It means:
+The `100644` number is an octal number and its binary representation is `1000000110100100`. It means:
 
 * `1000`: object type that represents a regular file.
 * `000`: three unused bits.
@@ -152,7 +152,7 @@ echo -n | GIT_AUTHOR_NAME="Foo" \
 # 383f6fb5445bd2dd84b5c2b52d80565b8973d111
 ```
 
-This time, we used `commit-tree` with environment variables. These variables are used to tell `commit-tree` to not use the default values when building the commit, making the outputted hash the same no matter where or when the command is run. Instead of passing a message using `-m`, we passed it through stdin by piping the output of the `echo -n` command with `git commit-tree`. Also, we're not passing any argument to `echo` so that this commit to have an empty message, and `-n` tells the command to not append a `\n` character to the output. To be sure, let's check if the commit has indeed an empty message by doing a `hexdump` of the commit object's file.
+This time, we used `commit-tree` with environment variables. These variables are used to tell `commit-tree` to not use the default values when building the commit, making the outputted hash the same no matter where or when the command is run. Instead of passing a message using `-m`, we passed it through stdin by piping the output of the `echo -n` command with `git commit-tree`. Also, we're not passing any argument to `echo` to make this commit have an empty message, and `-n` tells the command to not append a `\n` character to the output. To be sure, let's check if the commit has indeed an empty message by doing a `hexdump` of the commit object's file.
 
 ```shell
 pigz -c -z -d objects/38/3f6fb5445bd2dd84b5c2b52d80565b8973d111 | hexdump -C
