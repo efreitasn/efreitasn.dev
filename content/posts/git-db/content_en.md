@@ -88,7 +88,7 @@ git update-ref HEAD ca541533f0062a19e4dfc21663c1c9d8eebba127
 
 > **Note**: The `100644` passed to `git commit-tree` refers to the mode of the index entry, as specified in [index-format.txt](https://github.com/git/git/blob/master/Documentation/technical/index-format.txt#L38).
 
-I think this recap of some Git concepts is enough to get us started on the database. Note that there's a lot more Git concepts than the ones presented above, so take a look at the [Git reference](https://git-scm.com/docs) or the [Pro Git book](https://git-scm.com/book) if you want know more.
+I think this recap of some Git concepts is enough to get us started on the database. Note that there's a lot more Git concepts than the ones presented above, so take a look at the [Git reference](https://git-scm.com/docs) or the [Pro Git book](https://git-scm.com/book) if you want to know more.
 
 ## The DB
 Let's start by creating the database itself:
