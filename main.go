@@ -62,9 +62,6 @@ func main() {
 					l.Tag,
 				)
 			},
-			"getAnalyticsID": func() string {
-				return os.Getenv("ANALYTICS_ID")
-			},
 		},
 	})
 	if err != nil {
