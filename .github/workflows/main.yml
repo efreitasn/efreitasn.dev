@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    - name: Downnload go@v1.14
+    - name: Downnload go@v1.15
       uses: actions/setup-go@v1
       with:
-        go-version: 1.14
+        go-version: 1.15
 
     - name: Checkout repo
       uses: actions/checkout@v1
