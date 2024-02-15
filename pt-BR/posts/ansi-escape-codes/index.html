@@ -1,18 +1,95 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0e0e0e"><title>ANSI escape codes - efreitasn</title>
-<meta name="description" content="Exibindo strings personalizadas no seu terminal."><meta property="og:type" content="article"><meta property="og:url" content="https://efreitasn.dev/pt-BR/posts/ansi-escape-codes"><meta property="og:title" content="ANSI escape codes - efreitasn"><meta property="og:description" content="Exibindo strings personalizadas no seu terminal."><meta property="og:image:url" content="https://efreitasn.dev/assets/4b0ea0fd6cfb37a3793316b024726da7/1920.png"><meta property="og:image:alt" content="Logo do efreitasn.dev"><meta property="article:published_time" content="2019-09-08T16:37:00Z"><meta property="article:modified_time" content="2020-03-08T03:27:00Z"><meta property="twitter:image:alt" content="Logo do efreitasn.dev"><meta property="twitter:site" content="@efreitasn"><meta property="twitter:creator" content="@efreitasn"><link rel="icon" href="/assets/30ba753e7ca8f6dd067d57b3b85ef622/192.png"><link rel="apple-touch-icon" href="/assets/30ba753e7ca8f6dd067d57b3b85ef622/192.png"><link rel="alternate" hreflang="en" href="https://efreitasn.dev/posts/ansi-escape-codes"><link rel="alternate" hreflang="pt-BR" href="https://efreitasn.dev/pt-BR/posts/ansi-escape-codes"><link rel="stylesheet" href="/assets/style-ea4a5816adcf558b17ac07e7061dc6a9.css"></head><body><div class="wrapper"><header class="header"><h1 class="header__title"><a href="/pt-BR">efreitasn</a></h1></header><main class="main"><article><header class="post-header"><h1 class="post-header__title">ANSI escape codes</h1><p class="post-header__dates"><span>Criado:</span>
-<time>2019-09-08T16:37:00Z</time><br><span>Última atualização:</span>
-<time>2020-03-08T03:27:00Z</time></p></header><div class="post-content"><p>Você já imaginou como algumas CLIs exibem um texto personalizado no seu terminal? Com personalizado eu quero dizer: itálico, negrito, com cor de texto e/ou cor de de fundo diferentes das padrões etc. O segredo, digamos assim, é algo chamado ANSI escape codes.</p><h2>O que eles são</h2><p>Basicamente, ANSI escape codes são sequências de caracteres que começam com <code>ESC</code> e são interpretadas como comandos ao invés de somente caracteres. Elas foram criadas porque, quando terminais de verdade eram usados, havia a necessidade de padronizar a maneira como fabricantes poderiam exibir caracteres ao usuário usando esses dispositivos. Havia essa necessidade porque as fabricantes estavam criando suas próprias versões de escape codes para serem usadas em seus próprios dispositivos. Isso, <a href="https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/">assim como o que aconteceu com character encodings antes do Unicode</a>, criou problemas de compatibilidade.</p><p>Hoje em dia, algumas décadas depois, terminais não são mais usados, mas ANSI escape codes ainda estão por aí. Dessa vez, sendo usados em nossos emuladores de terminal (terminal emulators). Só para esclarecer as coisas, apesar de não significarem exatamente a mesma coisa, eu uso terminal e emulador de terminal de maneira intercambiável nesse post.</p><h2>Atributos</h2><p>Quando se trata de ANSI escape codes, atributos são definidos através de códigos. Uma sequência de atributos é definida entre <code>ESC[</code> e <code>m</code>, separando-os com um <code>;</code>. Por exemplo, uma string sublinhada com uma cor de fundo verde (4 bits) seria</p><pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;\x1b[4;42mTexto&#34;</span>
-</span></span></code></pre><p>Note que a string começa com <code>\x1b[</code>, que é <code>ESC[</code>, porém com o caractere <code>ESC</code> em sua representação ASCII hexadecimal, já que ele não faz parte da categoria de caracteres que podem ser exibidos (printable characters). <code>1</code> é o código para o atributo itálico, enquanto <code>42</code> é o código para atributo que define uma cor de fundo verde. O <code>m</code> antes de <code>Texto</code> indica o fim da sequência de atributos, fazendo com que <code>Texto</code> seja a parte que é de fato exibida ao usuário com ambos atributos aplicados.</p><h3>Cores</h3><p>Com relação às cores, há três grupos: cores 4 bits, cores 8 bits e cores 24 bits.</p><h4>Cores 4 bits</h4><p>Cores 4 bits são compostas por vermelho, verde, azul, preto, branco, ciano, magenta, amarelo e uma versão brighter para cada uma dessas cores. Dessa maneira, há 16 cores para serem usadas como cor de texto e/ou cor de fundo.</p><p>Os intervalos 30-37 e 90-97 compreendem as cores de texto, enquanto os intervalos 40-47 e 100-107 compreendem as cores de fundo.</p><p>Vamos imaginar que nós estamos construindo uma CLI que servirá como uma ferramenta para testes. Nessa CLI, nós queremos que testes que não passaram sejam representandos com uma string de cor de texto branca e cor de fundo vermelha. Para fazer isso, nós usaríamos algo como</p><pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;\x1b[37;41mFAIL&#34;</span>
-</span></span></code></pre><h4>Cores 8 bits</h4><p>16 cores são legais, mas e 256? Nesse segundo grupo, há 4 intervalos de cores. O primeiro, 0-7, é o mesmo que o intervalo 30-37 das cores 4 bits, enquanto o segundo, 8-15, é o mesmo que o intervalo 90-97. Os dois últimos intervalos são 16-231, que representa as novas cores com relação às cores 4 bits, e 232-255, que é uma escala de preto para branco.</p><p>Ao contrário do grupo anterior, o código da cor não muda dependendo de onde ela é usada (cor de texto ou cor de fundo). Se é uma cor de texto, a sequência começa com <code>38;5</code>. Se é uma cor de fundo, a sequência começa com <code>48;5</code>.</p><p>Uma cor de texto cinza seria representada da seguinte maneira:</p><pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;\x1b[38;5;240mTexto&#34;</span>
-</span></span></code></pre><h4>Cores 24 bits</h4><p>Com cores 24 bits nós aumentamos o número de cores possíveis em alguns bits. Nesse grupo, há mais de 16 milhões de cores possíveis. Esse grupo, chamado de true color, é como as cores usadas em HTML e CSS em que nós podemos representar vermelho, verde e azul com dois dígitos hexadecimais (1 byte) cada.</p><p>A sintaxe de uma cor 24 bits é</p><pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;\x1b[38;2;VERMELHO;VERDE;AZULm&#34;</span> <span class="c1"># Cor de texto</span>
+<!doctype html><html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0e0e0e">
+<title>ANSI escape codes - efreitasn</title>
+<meta name="description" content="Exibindo strings personalizadas no seu terminal.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://efreitasn.dev/pt-BR/posts/ansi-escape-codes">
+<meta property="og:title" content="ANSI escape codes - efreitasn">
+<meta property="og:description" content="Exibindo strings personalizadas no seu terminal.">
+<meta property="og:image:url" content="https://efreitasn.dev/assets/4b0ea0fd6cfb37a3793316b024726da7/1920.png">
+<meta property="og:image:alt" content="Logo do efreitasn.dev">
+<meta property="article:published_time" content="2019-09-08T16:37:00Z">
+<meta property="article:modified_time" content="2020-03-08T03:27:00Z">
+<meta property="twitter:image:alt" content="Logo do efreitasn.dev">
+<meta property="twitter:site" content="@efreitasn">
+<meta property="twitter:creator" content="@efreitasn">
+<link rel="icon" href="/assets/30ba753e7ca8f6dd067d57b3b85ef622/192.png">
+<link rel="apple-touch-icon" href="/assets/30ba753e7ca8f6dd067d57b3b85ef622/192.png">
+<link rel="alternate" hreflang="en" href="https://efreitasn.dev/posts/ansi-escape-codes"><link rel="alternate" hreflang="pt-BR" href="https://efreitasn.dev/pt-BR/posts/ansi-escape-codes">
+<link rel="stylesheet" href="/assets/style-ea4a5816adcf558b17ac07e7061dc6a9.css">
+</head>
+<body>
+<div class="wrapper">
+<header class="header">
+<h1 class="header__title">
+<a href="/pt-BR">efreitasn</a>
+</h1>
+</header>
+<main class="main">
+<article>
+<header class="post-header">
+<h1 class="post-header__title">ANSI escape codes</h1>
+<p class="post-header__dates">
+<span>Criado:</span>
+<time>2019-09-08T16:37:00Z</time><br>
+<span>Última atualização:</span>
+<time>2020-03-08T03:27:00Z</time>
+</p>
+</header>
+<div class="post-content">
+<p>Você já imaginou como algumas CLIs exibem um texto personalizado no seu terminal? Com personalizado eu quero dizer: itálico, negrito, com cor de texto e/ou cor de de fundo diferentes das padrões etc. O segredo, digamos assim, é algo chamado ANSI escape codes.</p>
+<h2>O que eles são</h2>
+<p>Basicamente, ANSI escape codes são sequências de caracteres que começam com <code>ESC</code> e são interpretadas como comandos ao invés de somente caracteres. Elas foram criadas porque, quando terminais de verdade eram usados, havia a necessidade de padronizar a maneira como fabricantes poderiam exibir caracteres ao usuário usando esses dispositivos. Havia essa necessidade porque as fabricantes estavam criando suas próprias versões de escape codes para serem usadas em seus próprios dispositivos. Isso, <a href="https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/" target="_blank" rel="noreferrer">assim como o que aconteceu com character encodings antes do Unicode</a>, criou problemas de compatibilidade.</p>
+<p>Hoje em dia, algumas décadas depois, terminais não são mais usados, mas ANSI escape codes ainda estão por aí. Dessa vez, sendo usados em nossos emuladores de terminal (terminal emulators). Só para esclarecer as coisas, apesar de não significarem exatamente a mesma coisa, eu uso terminal e emulador de terminal de maneira intercambiável nesse post.</p>
+<h2>Atributos</h2>
+<p>Quando se trata de ANSI escape codes, atributos são definidos através de códigos. Uma sequência de atributos é definida entre <code>ESC[</code> e <code>m</code>, separando-os com um <code>;</code>. Por exemplo, uma string sublinhada com uma cor de fundo verde (4 bits) seria</p>
+<pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;\x1b[4;42mTexto&#34;</span>
+</span></span></code></pre>
+<p>Note que a string começa com <code>\x1b[</code>, que é <code>ESC[</code>, porém com o caractere <code>ESC</code> em sua representação ASCII hexadecimal, já que ele não faz parte da categoria de caracteres que podem ser exibidos (printable characters). <code>1</code> é o código para o atributo itálico, enquanto <code>42</code> é o código para atributo que define uma cor de fundo verde. O <code>m</code> antes de <code>Texto</code> indica o fim da sequência de atributos, fazendo com que <code>Texto</code> seja a parte que é de fato exibida ao usuário com ambos atributos aplicados.</p>
+<h3>Cores</h3>
+<p>Com relação às cores, há três grupos: cores 4 bits, cores 8 bits e cores 24 bits.</p>
+<h4>Cores 4 bits</h4>
+<p>Cores 4 bits são compostas por vermelho, verde, azul, preto, branco, ciano, magenta, amarelo e uma versão brighter para cada uma dessas cores. Dessa maneira, há 16 cores para serem usadas como cor de texto e/ou cor de fundo.</p>
+<p>Os intervalos 30-37 e 90-97 compreendem as cores de texto, enquanto os intervalos 40-47 e 100-107 compreendem as cores de fundo.</p>
+<p>Vamos imaginar que nós estamos construindo uma CLI que servirá como uma ferramenta para testes. Nessa CLI, nós queremos que testes que não passaram sejam representandos com uma string de cor de texto branca e cor de fundo vermelha. Para fazer isso, nós usaríamos algo como</p>
+<pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;\x1b[37;41mFAIL&#34;</span>
+</span></span></code></pre>
+<h4>Cores 8 bits</h4>
+<p>16 cores são legais, mas e 256? Nesse segundo grupo, há 4 intervalos de cores. O primeiro, 0-7, é o mesmo que o intervalo 30-37 das cores 4 bits, enquanto o segundo, 8-15, é o mesmo que o intervalo 90-97. Os dois últimos intervalos são 16-231, que representa as novas cores com relação às cores 4 bits, e 232-255, que é uma escala de preto para branco.</p>
+<p>Ao contrário do grupo anterior, o código da cor não muda dependendo de onde ela é usada (cor de texto ou cor de fundo). Se é uma cor de texto, a sequência começa com <code>38;5</code>. Se é uma cor de fundo, a sequência começa com <code>48;5</code>.</p>
+<p>Uma cor de texto cinza seria representada da seguinte maneira:</p>
+<pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;\x1b[38;5;240mTexto&#34;</span>
+</span></span></code></pre>
+<h4>Cores 24 bits</h4>
+<p>Com cores 24 bits nós aumentamos o número de cores possíveis em alguns bits. Nesse grupo, há mais de 16 milhões de cores possíveis. Esse grupo, chamado de true color, é como as cores usadas em HTML e CSS em que nós podemos representar vermelho, verde e azul com dois dígitos hexadecimais (1 byte) cada.</p>
+<p>A sintaxe de uma cor 24 bits é</p>
+<pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;\x1b[38;2;VERMELHO;VERDE;AZULm&#34;</span> <span class="c1"># Cor de texto</span>
 </span></span><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;\x1b[48;2;VERMELHO;VERDE;AZULm&#34;</span> <span class="c1"># Cor de fundo</span>
-</span></span></code></pre><p>Assim como a função <code>rgb()</code> em CSS, <code>VERMELHO</code>, <code>VERDE</code> e <code>AZUL</code> são números no intervalo 0-255.</p><p>Caso queira ver quantas cores o seu terminal suporta, tem essa <a href="https://unix.stackexchange.com/q/23763">pergunta no Stack Exchange</a> e <a href="https://gist.github.com/XVilka/8346728">esse gist</a> que podem ajudar.</p><h3>Outros atributos</h3><p>Não há apenas cores nos atributos usados em ANSI escape codes. Como eu disse no começo, há como fazer outras coisas como deixar uma string em negrito ou itálico.</p><pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;\x1b[1mText&#34;</span> <span class="c1"># Negrito</span>
+</span></span></code></pre>
+<p>Assim como a função <code>rgb()</code> em CSS, <code>VERMELHO</code>, <code>VERDE</code> e <code>AZUL</code> são números no intervalo 0-255.</p>
+<p>Caso queira ver quantas cores o seu terminal suporta, tem essa <a href="https://unix.stackexchange.com/q/23763" target="_blank" rel="noreferrer">pergunta no Stack Exchange</a> e <a href="https://gist.github.com/XVilka/8346728" target="_blank" rel="noreferrer">esse gist</a> que podem ajudar.</p>
+<h3>Outros atributos</h3>
+<p>Não há apenas cores nos atributos usados em ANSI escape codes. Como eu disse no começo, há como fazer outras coisas como deixar uma string em negrito ou itálico.</p>
+<pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;\x1b[1mText&#34;</span> <span class="c1"># Negrito</span>
 </span></span><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;\x1b[3mText&#34;</span> <span class="c1"># Itálico</span>
 </span></span><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;\x1b[4mText&#34;</span> <span class="c1"># Sublinhado</span>
 </span></span><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;\x1b[9mText&#34;</span> <span class="c1"># Tachado</span>
-</span></span></code></pre><h3>Combinando-os</h3><p>Nenhum dos atributos mencionados acima é exclusivo. Sim, isso significa que há como deixar, por exemplo, uma string com uma cor de texto amarela e cor de fundo azul em negrito e itálico, sublinhá-la e tachá-la.</p><pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;\x1b[1;3;4;9;33;44mTexto&#34;</span>
-</span></span></code></pre><h3>Redefinindo tudo</h3><p>E se nós quisermos exibir outra string na mesma linha que o texto personalizado acima, mas sem atributos? Nós poderíamos usar o atributo de código <code>0</code>, que é usado para redefinir todos os atributos. Então, ficaria algo assim</p><pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;\x1b[1;3;4;9;33;44mTexto\x1b[0mOutroTexto&#34;</span>
-</span></span></code></pre><p>Enquanto todos os atributos especificados seriam aplicados em <code>Texto</code>, <code>OutroTexto</code> teria os atributos padrões do seu terminal.</p><h2>customo</h2><p>customo é um package que eu escrevi em go para ajudar na criação de strings personalizadas usando ANSI escape codes. <a href="https://github.com/efreitasn/customo">O projeto está disponível no GitHub</a> e suporta todos atributos mencionados nesse post. Ele também coloca um <code>\x1b[0m</code> no fim da string personalizada automaticamente, evitando um <em>vazamento de atributos</em>. Por exemplo,</p><pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span></code></pre>
+<h3>Combinando-os</h3>
+<p>Nenhum dos atributos mencionados acima é exclusivo. Sim, isso significa que há como deixar, por exemplo, uma string com uma cor de texto amarela e cor de fundo azul em negrito e itálico, sublinhá-la e tachá-la.</p>
+<pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;\x1b[1;3;4;9;33;44mTexto&#34;</span>
+</span></span></code></pre>
+<h3>Redefinindo tudo</h3>
+<p>E se nós quisermos exibir outra string na mesma linha que o texto personalizado acima, mas sem atributos? Nós poderíamos usar o atributo de código <code>0</code>, que é usado para redefinir todos os atributos. Então, ficaria algo assim</p>
+<pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;\x1b[1;3;4;9;33;44mTexto\x1b[0mOutroTexto&#34;</span>
+</span></span></code></pre>
+<p>Enquanto todos os atributos especificados seriam aplicados em <code>Texto</code>, <code>OutroTexto</code> teria os atributos padrões do seu terminal.</p>
+<h2>customo</h2>
+<p>customo é um package que eu escrevi em go para ajudar na criação de strings personalizadas usando ANSI escape codes. <a href="https://github.com/efreitasn/customo" target="_blank" rel="noreferrer">O projeto está disponível no GitHub</a> e suporta todos atributos mencionados nesse post. Ele também coloca um <code>\x1b[0m</code> no fim da string personalizada automaticamente, evitando um <em>vazamento de atributos</em>. Por exemplo,</p>
+<pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
 </span></span><span class="line"><span class="cl">	<span class="s">&#34;fmt&#34;</span>
@@ -31,5 +108,34 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre><p>é equivalente a</p><pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;\x1b[1;4;38;2;255;255;255;48;2;0;0;255mTexto\x1b[0m&#34;</span>
-</span></span></code></pre><p>que é uma string em negrito com uma cor de texto branca 24 bits e uma cor de fundo azul 24 bits.</p><h2>Conclusão</h2><p>Eu deixei alguns códigos de fora. Por exemplo, eu nem mencionei os códigos relacionados à posição do cursor ou coloquei uma tabela mostrando todas as possíveis combinações de cores. Se está procurando por uma tabela como essa ou pela lista completa de códigos, você pode dar uma olhada <a href="https://en.wikipedia.org/wiki/ANSI_escape_code">nessa página da Wikipédia</a>.</p></div><footer class="post-footer"><a href="https://github.com/efreitasn/efreitasn.dev/blob/master/content/posts/ansi-escape-codes/content_pt-BR.md">Ver no GitHub</a></footer></article></main><footer class="footer"><nav class="footer-nav"><ul><li><a href="https://github.com/efreitasn/efreitasn.dev">GitHub</a></li><li><a href="/pt-BR/posts/about">Sobre</a></li><li><a href="/posts/ansi-escape-codes">English</a></li></ul></nav></footer></div></body></html>
+</span></span></code></pre>
+<p>é equivalente a</p>
+<pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;\x1b[1;4;38;2;255;255;255;48;2;0;0;255mTexto\x1b[0m&#34;</span>
+</span></span></code></pre>
+<p>que é uma string em negrito com uma cor de texto branca 24 bits e uma cor de fundo azul 24 bits.</p>
+<h2>Conclusão</h2>
+<p>Eu deixei alguns códigos de fora. Por exemplo, eu nem mencionei os códigos relacionados à posição do cursor ou coloquei uma tabela mostrando todas as possíveis combinações de cores. Se está procurando por uma tabela como essa ou pela lista completa de códigos, você pode dar uma olhada <a href="https://en.wikipedia.org/wiki/ANSI_escape_code" target="_blank" rel="noreferrer">nessa página da Wikipédia</a>.</p>
+</div>
+<footer class="post-footer">
+<a href="https://github.com/efreitasn/efreitasn.dev/blob/master/content/posts/ansi-escape-codes/content_pt-BR.md">Ver no GitHub</a>
+</footer>
+</article>
+</main>
+<footer class="footer">
+<nav class="footer-nav">
+<ul>
+<li>
+<a href="https://github.com/efreitasn/efreitasn.dev">GitHub</a>
+</li>
+<li>
+<a href="/pt-BR/posts/about">Sobre</a>
+</li>
+<li>
+<a href="/posts/ansi-escape-codes">English</a>
+</li>
+</ul>
+</nav>
+</footer>
+</div>
+</body>
+</html>
