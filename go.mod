@@ -4,7 +4,7 @@ go 1.22
 
 require (
 	github.com/alecthomas/chroma v0.10.0
-	github.com/efreitasn/egen v1.1.4
+	github.com/efreitasn/egen v1.2.0
 )
 
 require (

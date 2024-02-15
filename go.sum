@@ -5,8 +5,8 @@ github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/dlclark/regexp2 v1.4.0 h1:F1rxgk7p4uKjwIQxBs9oAXe5CqrXlCduYEJvrF4u93E=
 github.com/dlclark/regexp2 v1.4.0/go.mod h1:2pZnwuY/m+8K6iRw6wQdMtk+rH5tNGR1i55kozfMjCc=
-github.com/efreitasn/egen v1.1.4 h1:vsi9lsbx8ZG93UeXlmTxAro2YqmDMV5p7QKHajA9SL4=
-github.com/efreitasn/egen v1.1.4/go.mod h1:XTzSnrTLrf4FrF8v4RKN8P/dYZr1md8OH6iW2aAUaxU=
+github.com/efreitasn/egen v1.2.0 h1:EEnonnHJ2rsD/c1cb1GQ05newL7d+q1i0GK2/wvcUbY=
+github.com/efreitasn/egen v1.2.0/go.mod h1:Y066yfwu8LCa/cWnneabf0jor/1Spep0D/tuzhcGvSM=
 github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646 h1:zYyBkD/k9seD2A7fsi6Oo2LfFZAehjjQMERAvZLEDnQ=
 github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646/go.mod h1:jpp1/29i3P1S/RLdc7JQKbRpFeM1dOBd8T9ki5s+AY8=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
